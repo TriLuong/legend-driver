@@ -33,9 +33,13 @@
     "camelcase": 0,
     "no-shadow": 0,
     "no-console": "off",
-    "quotes": [1, "single", { "avoidEscape": true }],
+    "quotes": [1, "single", {
+      "avoidEscape": true
+    }],
     "prefer-default-export": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx"]
+    }],
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default-member": 0,
     "no-plusplus": 0,
@@ -72,6 +76,8 @@
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/alt-text": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "linebreak-style": 0,
+    "eslint linebreak-style": [0, "error", "windows"]
   }
 }

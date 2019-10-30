@@ -1,4 +1,4 @@
-import { NetInfo } from 'react-native'
+// import { NetInfo } from 'react-native'
 import Axios from 'axios'
 
 const API_BASE_URL = 'https://legend-staging.firebaseapp.com'
@@ -9,28 +9,28 @@ export const apiAxiosInstance = Axios.create({
   timeout: API_REQUEST_TIMEOUT
 })
 
-apiAxiosInstance.interceptors.request.use(async config => {
-  const isConnected = await NetInfo.isConnected.fetch()
-  if (!isConnected) {
-    return Promise.reject(Error('Network not available'))
-  }
+// apiAxiosInstance.interceptors.request.use(async config => {
+//   const isConnected = await NetInfo.isConnected.fetch()
+//   if (!isConnected) {
+//     return Promise.reject(Error('Network not available'))
+//   }
 
-  // eslint-disable-next-line no-undef
-  if (__DEV__) {
-    const tag = 'Request'.padEnd(16)
-    const method = `[${config.method.toUpperCase()}]`.padEnd(10)
-    const url = `${config.baseURL}${config.url}`
-    const title = `${tag}${method}${url}`
+//   // eslint-disable-next-line no-undef
+//   if (__DEV__) {
+//     const tag = 'Request'.padEnd(16)
+//     const method = `[${config.method.toUpperCase()}]`.padEnd(10)
+//     const url = `${config.baseURL}${config.url}`
+//     const title = `${tag}${method}${url}`
 
-    console.group(`%c ${title}`, ...['color: #03A9F4; font-weight: bold;'])
+//     console.group(`%c ${title}`, ...['color: #03A9F4; font-weight: bold;'])
 
-    config.headers && console.log('Headers'.padEnd(14), config.headers)
-    config.params && console.log('Param'.padEnd(14), config.params)
-    config.data && console.log('Body'.padEnd(14), config.data)
-    console.groupEnd()
-  }
-  return config
-})
+//     config.headers && console.log('Headers'.padEnd(14), config.headers)
+//     config.params && console.log('Param'.padEnd(14), config.params)
+//     config.data && console.log('Body'.padEnd(14), config.data)
+//     console.groupEnd()
+//   }
+//   return config
+// })
 
 apiAxiosInstance.interceptors.response.use(
   response => {

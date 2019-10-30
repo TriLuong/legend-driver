@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Container, Row, Col, Form } from 'reactstrap'
 import { Formik } from 'formik'
 import { InputText, Button } from 'Components/common'
-import './styles.scss'
 import Assets from 'Assets'
+import { useInjectSaga } from 'redux-injectors'
+import saga from './saga'
+import { loginRequest } from 'Store/auth/actions'
+import './styles.scss'
 
+const key = 'login'
 const Login = () => {
+  useInjectSaga({ key, saga })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
   const onChange = (name, value, setFieldValue) => {
     setFieldValue(name, value)
@@ -15,6 +22,7 @@ const Login = () => {
 
   const onSubmit = values => {
     console.log(values)
+    dispatch(loginRequest(values))
   }
 
   return (
