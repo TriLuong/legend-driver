@@ -1,7 +1,8 @@
 const images = {
   icon: require('./images/icon.png'),
   splash: require('./images/splash.png'),
-  loadLeftIcon: require('./images/loadLeftIcon.png')
+  loadLeftIcon: require('./images/loadLeftIcon.png'),
+  logoutIcon: require('./images/logoutIcon.png')
 }
 
 const fontMap = {

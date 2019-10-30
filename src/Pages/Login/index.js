@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Container, Row, Col, Input } from 'reactstrap'
 import { Formik } from 'formik'
-import { InputText, Button } from 'Components/common'
+import { InputText, Button, Text } from 'Components/common'
 import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
 import saga from './saga'
@@ -29,7 +29,7 @@ const Login = () => {
     <div className="loginContainer d-flex justify-content-between flex-column">
       <div className="containerHeader d-flex flex-row">
         <div className="loginHeader">
-          <p className="titleLogin">Log In</p>
+          <Text text="Log In" />
         </div>
         <div>
           <img src={Assets.images.icon} />

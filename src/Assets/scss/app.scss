@@ -29,13 +29,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: SFProDisplay-Bold;
+  src: url(../fonts/SFProDisplay-Bold.otf);
+  font-weight: bold;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
   font-size: 15px;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: var(--purple-blue);
   color: #232530;
   font-family: SFProText-Regular;
   letter-spacing: 0.06em;
