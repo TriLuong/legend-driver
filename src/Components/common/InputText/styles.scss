@@ -1,15 +1,14 @@
 .textInput {
-  width: 100%;
-  height: 50px;
+  height: 50px !important;
   opacity: 0.88;
-  border-radius: 8px;
-  background-color: var(--white-two);
-  font-size: 16px;
-  font-weight: normal;
+  border-radius: 8px !important;
+  background-color: var(--white-two) !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-  letter-spacing: -0.4px;
-  color: var(--black);
-  padding: 15px;
+  letter-spacing: -0.4px !important;
+  color: var(--black) !important;
+  padding: 15px !important;
 }

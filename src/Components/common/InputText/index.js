@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from 'reactstrap'
 import './styles.scss'
 
-const InputText = ({ placeholder, name, onChange, ...rest }) => {
+const InputText = ({ className, placeholder, name, onChange, ...rest }) => {
   const onChangeText = event => {
     const { target } = event
     const { name, value } = target
@@ -10,7 +10,7 @@ const InputText = ({ placeholder, name, onChange, ...rest }) => {
   }
   return (
     <Input
-      className="textInput"
+      className={`${className || ''} textInput`}
       placeholder={placeholder}
       name={name}
       onChange={onChangeText}

@@ -2,8 +2,8 @@ import React from 'react'
 import { Button } from 'reactstrap'
 import './styles.scss'
 
-const ButtonCommon = ({ text, ...rest }) => (
-  <Button className="btn w-100" {...rest}>
+const ButtonCommon = ({ className, text, ...rest }) => (
+  <Button className={`buttonCommon w-100 ${className || ''}`} {...rest}>
     {text}
   </Button>
 )

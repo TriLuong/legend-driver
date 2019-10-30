@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Container, Row, Col, Form } from 'reactstrap'
+import { Container, Row, Col, Input } from 'reactstrap'
 import { Formik } from 'formik'
 import { InputText, Button } from 'Components/common'
 import Assets from 'Assets'
@@ -27,19 +27,17 @@ const Login = () => {
 
   return (
     <div className="loginContainer d-flex justify-content-between flex-column">
-      <Container>
-        <Row className="loginHeader">
-          <Col xs="6">
-            <p className="titleLogin">Log In</p>
-          </Col>
-          <Col xs="6">
-            <img src={Assets.images.icon} />
-          </Col>
-        </Row>
-      </Container>
+      <div className="containerHeader d-flex flex-row">
+        <div className="loginHeader">
+          <p className="titleLogin">Log In</p>
+        </div>
+        <div>
+          <img src={Assets.images.icon} />
+        </div>
+      </div>
       <Formik initialValues={{ email, password }} onSubmit={onSubmit}>
         {({ setFieldValue, handleSubmit, values }) => (
-          <Form className="containterInput" onSubmit={handleSubmit}>
+          <form className="containterInput" onSubmit={handleSubmit}>
             <InputText
               type="email"
               placeholder="Email"
@@ -56,8 +54,8 @@ const Login = () => {
               onChange={(name, value) => onChange(name, value, setFieldValue)}
               className="mb-2"
             />
-            <Button className="btnLogin w-100" text="Login" type="submit" />
-          </Form>
+            <Button text="Login" type="submit" />
+          </form>
         )}
       </Formik>
     </div>
