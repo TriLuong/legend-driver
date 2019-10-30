@@ -3,7 +3,7 @@ import { clearAll } from 'Utils/localStorage'
 import types from './constanst'
 
 function loginSuccess(state, action) {
-  state = action.payload.token
+  state = action.payload
   return state
 }
 

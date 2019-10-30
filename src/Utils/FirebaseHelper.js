@@ -18,9 +18,11 @@ function init() {
 
 const auth = () => firebase.auth()
 const currentUserToken = () => firebase.auth().currentUser.getIdToken()
+const getIdTokenResult = () => firebase.auth().currentUser.getIdTokenResult()
 
 export default {
   init,
   auth,
-  currentUserToken
+  currentUserToken,
+  getIdTokenResult
 }
