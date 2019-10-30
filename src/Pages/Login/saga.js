@@ -1,4 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
+import axios from 'axios'
 import Api from 'Services/Network/Api'
 import actions from 'Store/auth/actions'
 import types from 'Store/auth/constanst'
@@ -11,6 +12,8 @@ function* loginSaga({ payload }) {
     const token = yield FirebaseHelper.currentUserToken()
     const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
     const role = currentIdTokenResult.claims.role
+    axios.headers.common.Authorization = `Bearer ${token}`
+
     yield put(
       actions.loginSuccess({
         user: { uid: res.user.uid, role },
