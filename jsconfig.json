@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "allowUnreachableCode": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@Assets": ["Assets"],
+      "@Store/*": ["Store/*"],
+      "@Components/*": ["Components/*"],
+      "@Utils/*": ["Utils/*"]
+    }
+  }
+}
