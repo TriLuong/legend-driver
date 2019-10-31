@@ -28,6 +28,17 @@ function* loginSaga({ payload }) {
   }
 }
 
+function* logoutSaga() {
+  try {
+    yield call(Api.logout)
+    yield put(actions.loginFailure())
+    yield put(push('/login'))
+  } catch (error) {
+    yield put(actions.loginFailure())
+  }
+}
+
 export default function* loginWatcher() {
   yield takeLatest(types.LOGIN_REQUEST, loginSaga)
+  yield takeLatest(types.LOGOUT_REQUEST, logoutSaga)
 }
