@@ -1,21 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Layout from 'Layout'
-import { Switch, Route } from 'react-router-dom'
-import Login from 'Pages/Login'
-import LoadHistory from 'Pages/LoadHistory'
-import LoadDetail from 'Pages/LoadDetail'
-import Chatbot from 'Pages/Chatbot'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { getTokenSelector } from 'Store/auth/selectors'
 import Loader from 'Pages/Loader'
-// import './App.css'
+import RoutesName from './RoutesName'
 
 function App() {
+  const token = useSelector(getTokenSelector)
   return (
     <Layout>
       <Switch>
-        <Route exact path="/" component={LoadHistory} />
-        <Route path="/login" component={Login} />
-        <Route path="/loadDetail/:loadId" component={LoadDetail} />
-        <Route path="/chatbot/:loadId" component={Chatbot} />
+        {RoutesName.map((route, index) => {
+          const { path, component } = route
+          return <Route key={index} exact path={path} component={component} />
+        })}
+        {!token && <Redirect to="/login" />}
         <Route path="/error" />
       </Switch>
       <Loader />
