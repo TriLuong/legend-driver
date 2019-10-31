@@ -5,6 +5,7 @@ import Login from 'Pages/Login'
 import LoadHistory from 'Pages/LoadHistory'
 import LoadDetail from 'Pages/LoadDetail'
 import Chatbot from 'Pages/Chatbot'
+import Loader from 'Pages/Loader'
 // import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/chatbot/:loadId" component={Chatbot} />
         <Route path="/error" />
       </Switch>
+      <Loader />
     </Layout>
   )
 }

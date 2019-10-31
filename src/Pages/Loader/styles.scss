@@ -1,0 +1,37 @@
+.loadingLayer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--charcoal-grey);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.loading {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--electric-purple);
+  border-radius: 50%;
+  border-top-color: var(--white);
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  position: fixed;
+  z-index: 2;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
