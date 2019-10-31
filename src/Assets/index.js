@@ -2,7 +2,11 @@ const images = {
   icon: require('./images/icon.png'),
   splash: require('./images/splash.png'),
   loadLeftIcon: require('./images/loadLeftIcon.png'),
-  logoutIcon: require('./images/logoutIcon.png')
+  logoutIcon: require('./images/logoutIcon.png'),
+  backIcon: require('./images/backIcon.png'),
+  threeDots: require('./images/threeDots.png'),
+  phoneIcon: require('./images/phoneIcon.png'),
+  navigatorIcon: require('./images/navigatorIcon.png')
 }
 
 const fontMap = {

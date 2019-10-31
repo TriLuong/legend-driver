@@ -1,5 +1,6 @@
 import React from 'react'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Container } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import Assets from 'Assets'
 
 const TodayLoads = () => (
@@ -10,33 +11,39 @@ const TodayLoads = () => (
       </Col>
     </Row>
     <div className="containerLoadItems">
-      <Row className="containerLoadItem">
-        <Col sm="2" xs="2">
-          <img src={Assets.images.loadLeftIcon} />
-        </Col>
-        <Col sm="10" xs="10">
-          <h4 className="loadId">#1263893488</h4>
-          <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-        </Col>
-      </Row>
-      <Row className="containerLoadItem">
-        <Col sm="2" xs="2">
-          <img src={Assets.images.loadLeftIcon} />
-        </Col>
-        <Col sm="10" xs="10">
-          <h4 className="loadId">#1263893488</h4>
-          <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-        </Col>
-      </Row>
-      <Row className="containerLoadItem">
-        <Col sm="2" xs="2">
-          <img src={Assets.images.loadLeftIcon} />
-        </Col>
-        <Col sm="10" xs="10">
-          <h4 className="loadId">#1263893488</h4>
-          <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-        </Col>
-      </Row>
+      <Link to="/loadDetail">
+        <Row className="containerLoadItem">
+          <Col sm="2" xs="2">
+            <img src={Assets.images.loadLeftIcon} />
+          </Col>
+          <Col sm="10" xs="10">
+            <h4 className="loadId">#1263893488</h4>
+            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
+          </Col>
+        </Row>
+      </Link>
+      <Link to="/loadDetail">
+        <Row className="containerLoadItem">
+          <Col sm="2" xs="2">
+            <img src={Assets.images.loadLeftIcon} />
+          </Col>
+          <Col sm="10" xs="10">
+            <h4 className="loadId">#1263893488</h4>
+            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
+          </Col>
+        </Row>
+      </Link>
+      <Link to="/loadDetail">
+        <Row className="containerLoadItem">
+          <Col sm="2" xs="2">
+            <img src={Assets.images.loadLeftIcon} />
+          </Col>
+          <Col sm="10" xs="10">
+            <h4 className="loadId">#1263893488</h4>
+            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
+          </Col>
+        </Row>
+      </Link>
     </div>
   </Container>
 )

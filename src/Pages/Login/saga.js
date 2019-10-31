@@ -1,4 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
+import { push } from 'connected-react-router'
 import axios from 'axios'
 import Api from 'Services/Network/Api'
 import actions from 'Store/auth/actions'
@@ -20,7 +21,9 @@ function* loginSaga({ payload }) {
         token
       })
     )
+    yield put(push('/'))
   } catch (error) {
+    console.log(error)
     yield put(actions.loginFailure(error))
   }
 }

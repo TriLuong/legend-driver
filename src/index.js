@@ -6,7 +6,7 @@ import FirebaseHelper from 'Utils/FirebaseHelper'
 import { configureStore } from 'Store/configureStore'
 import history from 'Utils/history'
 
-import App from './App'
+import App from 'Pages/App'
 import * as serviceWorker from './serviceWorker'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
