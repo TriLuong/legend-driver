@@ -27,6 +27,7 @@ function* loginSaga({ payload }) {
   } catch (error) {
     console.log(error)
     yield put(loaderEnd())
+    alert(error)
     yield put(actions.loginFailure(error))
   }
 }
@@ -40,6 +41,7 @@ function* logoutSaga() {
     yield put(push('/login'))
   } catch (error) {
     yield put(loaderEnd())
+    alert(error)
     yield put(actions.loginFailure())
   }
 }
