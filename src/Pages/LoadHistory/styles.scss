@@ -55,7 +55,9 @@
       letter-spacing: 1px;
       text-align: center;
       color: var(--cool-grey);
+      cursor: pointer;
     }
+
     .active {
       color: var(--electric-purple) !important;
     }
@@ -96,6 +98,7 @@
 
 .containerLoadItems {
   padding: 0 15px;
+
   .containerLoadItem {
     border-radius: 12px;
     border: solid 1px var(--slate-grey-12);
@@ -103,6 +106,7 @@
     background-image: linear-gradient(to bottom, var(--black-4), var(--black-4));
     padding: 16px 0;
     margin-bottom: 12px;
+
     .loadId {
       font-family: SFProText-SemiBold;
       font-size: 20px;

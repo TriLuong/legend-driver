@@ -12,9 +12,11 @@ export const logout = async () => {
 }
 
 export const getLoads = params => ApiInstance.get('/api/v1/loads', params)
+export const getLoadById = id => ApiInstance.get(`/api/v1/loads/${id}`)
 
 export default {
   login,
   logout,
-  getLoads
+  getLoads,
+  getLoadById
 }

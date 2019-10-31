@@ -7,9 +7,9 @@ import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
 import { logoutRequest } from 'Store/auth/actions'
 import { getLoads } from 'Store/loads/actions'
+import { getLoadsSelector } from 'Store/loads/selectors'
 import saga from 'Pages/Login/saga'
 import sagaLoads from './saga'
-import { getLoadsSelector } from 'Store/loads/selectors'
 import TodayLoads from './TodayLoads'
 import './styles.scss'
 
@@ -22,9 +22,9 @@ const LoadHistory = () => {
 
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
-  useEffect(() => dispatch(getLoads()), [])
+  useEffect(() => dispatch(getLoads({})), [])
   const loads = useSelector(getLoadsSelector)
-  console.log(loads)
+  console.log('loads', loads)
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)
@@ -68,7 +68,7 @@ const LoadHistory = () => {
 
       <TabContent activeTab={activeTab} className="tabContent">
         <TabPane tabId="1">
-          <TodayLoads />
+          <TodayLoads data={loads} />
         </TabPane>
         <TabPane tabId="2">
           <Row>

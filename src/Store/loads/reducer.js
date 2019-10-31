@@ -6,9 +6,15 @@ function getLoadsSuccess(state, action) {
   return state
 }
 
+// function getLoadByIdSuccess(state, action) {
+//   state = action.payload
+//   return state
+// }
+
 // eslint-disable-next-line no-unused-vars
-const authReducer = createReducer(null, {
-  [types.GET_LOADS_SUCCESS]: getLoadsSuccess
+const loadsReducer = createReducer(null, {
+  [types.GET_LOADS_SUCCESS]: getLoadsSuccess,
+  [types.GET_LOAD_BY_ID_SUCCESS]: getLoadsSuccess
 })
 
-export default authReducer
+export default loadsReducer

@@ -1,51 +1,30 @@
 import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import Assets from 'Assets'
+import DataList from 'Components/DataList'
 
-const TodayLoads = () => (
-  <Container>
-    <Row>
-      <Col sm="12">
-        <h4 className="headerDate">Wednesday-Oct-15th</h4>
-      </Col>
-    </Row>
-    <div className="containerLoadItems">
-      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
-        <Row className="containerLoadItem">
-          <Col sm="2" xs="2">
-            <img src={Assets.images.loadLeftIcon} />
-          </Col>
-          <Col sm="10" xs="10">
-            <h4 className="loadId">#1263893488</h4>
-            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-          </Col>
-        </Row>
-      </Link>
-      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
-        <Row className="containerLoadItem">
-          <Col sm="2" xs="2">
-            <img src={Assets.images.loadLeftIcon} />
-          </Col>
-          <Col sm="10" xs="10">
-            <h4 className="loadId">#1263893488</h4>
-            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-          </Col>
-        </Row>
-      </Link>
-      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
-        <Row className="containerLoadItem">
-          <Col sm="2" xs="2">
-            <img src={Assets.images.loadLeftIcon} />
-          </Col>
-          <Col sm="10" xs="10">
-            <h4 className="loadId">#1263893488</h4>
-            <p className="loadDetail">Flatbed • 10/26/2019 • 17:00</p>
-          </Col>
-        </Row>
-      </Link>
-    </div>
-  </Container>
-)
+const TodayLoads = props => {
+  const { data } = props
+  console.log('TodayLoads', props)
+  return (
+    <Container>
+      <Row>
+        <Col sm="12">
+          <h4 className="headerDate">Wednesday-Oct-15th</h4>
+        </Col>
+      </Row>
+      <div className="containerLoadItems">
+        {data && data.map(item => <DataList key={item.id} data={item} />)}
+        <Link to="/loadDetail/asdasd" className="row loadItemLink">
+          <div className="col-2">ADSD</div>
+          <div className="col-10">
+            <h4 className="loadId">SADFSDF</h4>
+            <p className="loadDetail">SDSAFDDS</p>
+          </div>
+        </Link>
+      </div>
+    </Container>
+  )
+}
 
 export default TodayLoads

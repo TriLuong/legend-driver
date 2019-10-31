@@ -4,7 +4,12 @@ const loadsReducer = state => state.loadsReducer
 
 export const getLoadsSelector = createSelector(
   loadsReducer,
-  loads => loads
+  data => data
 )
+
+// export const getLoadByIdSelector = createSelector(
+//   loadsReducer,
+//   data => data.load
+// )
 
 export default { getLoadsSelector }
