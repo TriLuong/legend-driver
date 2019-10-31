@@ -19,7 +19,7 @@
       align-items: center;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.2)
+        background-color: rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -27,7 +27,7 @@
       width: 16px;
       height: 16px;
       -webkit-filter: invert(1);
-      filter: invert(1)
+      filter: invert(1);
     }
   }
 }
@@ -47,6 +47,17 @@
 
     .nav-link {
       padding: 16px 0;
+      font-family: SFProText-SemiBold;
+      font-size: 14px;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1px;
+      text-align: center;
+      color: var(--cool-grey);
+    }
+    .active {
+      color: var(--electric-purple) !important;
     }
 
     &:first-child {
@@ -67,7 +78,48 @@
   }
 }
 
-.tab-content {
+.tabContent {
   flex: 1;
-  padding-top: 24px;
+  padding-top: 52px;
+  background-color: var(--pale-grey);
+}
+
+.headerDate {
+  font-family: SFProDisplay-Bold;
+  font-size: 20px;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: 0.38px;
+  color: var(--dark-indigo);
+  margin-bottom: 16px;
+}
+
+.containerLoadItems {
+  padding: 0 15px;
+  .containerLoadItem {
+    border-radius: 12px;
+    border: solid 1px var(--slate-grey-12);
+    background-blend-mode: luminosity;
+    background-image: linear-gradient(to bottom, var(--black-4), var(--black-4));
+    padding: 16px 0;
+    margin-bottom: 12px;
+    .loadId {
+      font-family: SFProText-SemiBold;
+      font-size: 20px;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: var(--navy);
+    }
+
+    .loadDetail {
+      opacity: 0.72;
+      font-family: SFProText-Regular;
+      font-size: 14px;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: -0.22px;
+      color: var(--charcoal-grey);
+    }
+  }
 }

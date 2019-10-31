@@ -5,6 +5,7 @@ import { Text } from 'Components/common'
 
 import classnames from 'classnames'
 import Assets from 'Assets'
+import TodayLoads from './TodayLoads'
 import './styles.scss'
 
 const LoadHistory = props => {
@@ -31,7 +32,7 @@ const LoadHistory = props => {
               toggle('1')
             }}
           >
-            Today
+            TODAY
           </NavLink>
         </NavItem>
         <NavItem>
@@ -41,18 +42,14 @@ const LoadHistory = props => {
               toggle('2')
             }}
           >
-            Past Loads
+            PAST LOADS
           </NavLink>
         </NavItem>
       </Nav>
 
-      <TabContent activeTab={activeTab} style={{ backgroundColor: 'red' }}>
+      <TabContent activeTab={activeTab} className="tabContent">
         <TabPane tabId="1">
-          <Row>
-            <Col sm="12">
-              <h4>Tab 1 Contents</h4>
-            </Col>
-          </Row>
+          <TodayLoads />
         </TabPane>
         <TabPane tabId="2">
           <Row>

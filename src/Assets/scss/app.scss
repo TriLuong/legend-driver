@@ -30,6 +30,13 @@
 }
 
 @font-face {
+  font-family: SFProText-SemiBold;
+  src: url(../fonts/SFProText-SemiBold.otf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
   font-family: SFProDisplay-Bold;
   src: url(../fonts/SFProDisplay-Bold.otf);
   font-weight: bold;
@@ -68,5 +75,9 @@ input {
   // line-height: 20px;
   // text-align: center;
   // background: transparent;
-  // outline: none;    
+  // outline: none;
+}
+
+p {
+  margin: 0;
 }
