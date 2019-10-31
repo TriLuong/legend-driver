@@ -13,7 +13,7 @@ function* loginSaga({ payload }) {
     const token = yield FirebaseHelper.currentUserToken()
     const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
     const role = currentIdTokenResult.claims.role
-    axios.headers.common.Authorization = `Bearer ${token}`
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
 
     yield put(
       actions.loginSuccess({

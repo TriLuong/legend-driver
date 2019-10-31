@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Container, Row, Col, Input } from 'reactstrap'
 import { Formik } from 'formik'
 import { InputText, Button, Text } from 'Components/common'
 import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
-import saga from './saga'
 import { loginRequest } from 'Store/auth/actions'
+import saga from './saga'
 import './styles.scss'
 
 const key = 'login'
