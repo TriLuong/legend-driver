@@ -5,7 +5,6 @@ import DataList from 'Components/DataList'
 
 const TodayLoads = props => {
   const { data } = props
-  console.log('TodayLoads', props)
   return (
     <Container>
       <Row>

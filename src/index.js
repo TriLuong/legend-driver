@@ -14,7 +14,7 @@ import 'Assets/scss/app.scss'
 
 FirebaseHelper.init()
 
-const store = configureStore(history)
+export const store = configureStore(history)
 
 ReactDOM.render(
   <Provider store={store}>

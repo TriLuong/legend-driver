@@ -1,18 +1,12 @@
 import { createSelector } from 'reselect'
 
-const authReducer = state => state.authReducer
+const authReducer = state => state.token
 
 export const getTokenSelector = createSelector(
   authReducer,
-  auth => auth.token
-)
-
-export const getRolelector = createSelector(
-  authReducer,
-  auth => auth.user.role
+  token => token
 )
 
 export default {
-  getTokenSelector,
-  getRolelector
+  getTokenSelector
 }

@@ -6,13 +6,12 @@ import Assets from 'Assets'
 import './styles.scss'
 
 const LoadDetail = props => {
-  // const onClick = loadId => {
-  //   const { history } = props
-  //   history.push({
-  //     pathname: `/chatbot/${loadId}`
-  //   })
-  // }
-  console.log('LoadDetail', props)
+  const onClick = loadId => {
+    const { history } = props
+    history.push({
+      pathname: `/chatbot/${loadId}`
+    })
+  }
   return (
     <div className="containerLoadDetail">
       {/* <div className="headerLoadDetail d-flex flex-row justify-content-between align-items-center">
@@ -72,7 +71,7 @@ const LoadDetail = props => {
             </div>
           </div>
         </div>
-        <Button text="Accept Load" />
+        <Button text="Accept Load" onClick={() => onClick('xhBckujjYbS9muqWW5040GCodVB2')} />
       </div>
     </div>
   )

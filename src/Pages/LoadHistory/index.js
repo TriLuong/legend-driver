@@ -24,7 +24,6 @@ const LoadHistory = () => {
   const [activeTab, setActiveTab] = useState('1')
   useEffect(() => dispatch(getLoads({})), [])
   const loads = useSelector(getLoadsSelector)
-  console.log('loads', loads)
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)

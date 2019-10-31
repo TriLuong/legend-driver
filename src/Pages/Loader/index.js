@@ -5,7 +5,6 @@ import { getFetchingSelector } from 'Store/loader/selectors'
 const Loader = () => {
   const isFetching = useSelector(getFetchingSelector)
 
-  console.log('Loader', isFetching)
   if (!isFetching) {
     return null
   }

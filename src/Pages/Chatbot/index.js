@@ -12,7 +12,7 @@ const Chatbot = props => {
   const { loadId } = match.params
   const token = useSelector(getTokenSelector)
   const srcIframe = `${sourceChatbot}?token=${token}&load_id=${loadId}&uri_login=${uriLogin}`
-
+  console.log(token)
   const onLoad = () => {
     setIsLoading(false)
   }

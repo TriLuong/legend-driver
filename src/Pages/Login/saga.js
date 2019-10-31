@@ -13,15 +13,10 @@ function* loginSaga({ payload }) {
     const { email, password } = payload
     const res = yield call(Api.login, email, password)
     const token = yield FirebaseHelper.currentUserToken()
-    const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
-    const role = currentIdTokenResult.claims.role
+    // const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
+    // const role = currentIdTokenResult.claims.role
     ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
-    yield put(
-      actions.loginSuccess({
-        user: { uid: res.user.uid, role },
-        token
-      })
-    )
+    yield put(actions.loginSuccess(token))
     yield put(loaderEnd())
     yield put(push('/'))
   } catch (error) {

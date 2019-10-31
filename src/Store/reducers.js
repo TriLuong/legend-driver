@@ -8,7 +8,7 @@ import { LOGOUT_REQUEST } from './auth/constanst'
 
 export default function createReducer(injectedReducers = {}) {
   const appReducer = combineReducers({
-    authReducer,
+    token: authReducer,
     loadsReducer,
     loaderReducer,
     router: connectRouter(history),
