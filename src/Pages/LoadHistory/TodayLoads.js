@@ -11,7 +11,7 @@ const TodayLoads = () => (
       </Col>
     </Row>
     <div className="containerLoadItems">
-      <Link to="/loadDetail">
+      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
         <Row className="containerLoadItem">
           <Col sm="2" xs="2">
             <img src={Assets.images.loadLeftIcon} />
@@ -22,7 +22,7 @@ const TodayLoads = () => (
           </Col>
         </Row>
       </Link>
-      <Link to="/loadDetail">
+      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
         <Row className="containerLoadItem">
           <Col sm="2" xs="2">
             <img src={Assets.images.loadLeftIcon} />
@@ -33,7 +33,7 @@ const TodayLoads = () => (
           </Col>
         </Row>
       </Link>
-      <Link to="/loadDetail">
+      <Link to="/loadDetail/eJoZzcfFr22s93ARgnfe">
         <Row className="containerLoadItem">
           <Col sm="2" xs="2">
             <img src={Assets.images.loadLeftIcon} />

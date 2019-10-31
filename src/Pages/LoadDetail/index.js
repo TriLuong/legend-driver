@@ -6,9 +6,11 @@ import Assets from 'Assets'
 import './styles.scss'
 
 const LoadDetail = props => {
-  const onClick = () => {
+  const onClick = loadId => {
     const { history } = props
-    history.push('/chatbot')
+    history.push({
+      pathname: `/chatbot/${loadId}`
+    })
   }
   return (
     <div className="containerLoadDetail">
@@ -69,7 +71,7 @@ const LoadDetail = props => {
             </div>
           </div>
         </div>
-        <Button text="Accept Load" onClick={onClick} />
+        <Button text="Accept Load" onClick={() => onClick('eJoZzcfFr22s93ARgnfe')} />
       </div>
     </div>
   )

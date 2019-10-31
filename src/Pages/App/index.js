@@ -13,8 +13,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoadHistory} />
         <Route path="/login" component={Login} />
-        <Route path="/loadDetail" component={LoadDetail} />
-        <Route path="/chatbot" component={Chatbot} />
+        <Route path="/loadDetail/:loadId" component={LoadDetail} />
+        <Route path="/chatbot/:loadId" component={Chatbot} />
         <Route path="/error" />
       </Switch>
     </Layout>
