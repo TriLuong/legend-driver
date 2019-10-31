@@ -1,21 +1,30 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
 import { Text } from 'Components/common'
 import classnames from 'classnames'
 import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
 import { logoutRequest } from 'Store/auth/actions'
+import { getLoads } from 'Store/loads/actions'
 import saga from 'Pages/Login/saga'
+import sagaLoads from './saga'
+import { getLoadsSelector } from 'Store/loads/selectors'
 import TodayLoads from './TodayLoads'
 import './styles.scss'
 
 const key = 'logout'
+const keyLoads = 'loads'
 
 const LoadHistory = () => {
   useInjectSaga({ key, saga })
+  useInjectSaga({ key: keyLoads, saga: sagaLoads })
+
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
+  useEffect(() => dispatch(getLoads()), [])
+  const loads = useSelector(getLoadsSelector)
+  console.log(loads)
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)

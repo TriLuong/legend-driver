@@ -1,41 +1,36 @@
-// import { NetInfo } from 'react-native'
 import Axios from 'axios'
+import { getStore } from 'Store/Store'
+import { logoutRequest } from 'Store/auth/actions'
 
 const API_BASE_URL = 'https://legend-staging.firebaseapp.com'
 const API_REQUEST_TIMEOUT = 60000
+const IS_STAGING = process.env.NODE_ENV !== 'production'
 
-export const apiAxiosInstance = Axios.create({
+const ApiInstance = Axios.create({
   baseURL: API_BASE_URL,
   timeout: API_REQUEST_TIMEOUT
 })
 
-// apiAxiosInstance.interceptors.request.use(async config => {
-//   const isConnected = await NetInfo.isConnected.fetch()
-//   if (!isConnected) {
-//     return Promise.reject(Error('Network not available'))
-//   }
+ApiInstance.interceptors.request.use(async config => {
+  if (IS_STAGING) {
+    const tag = 'Request'.padEnd(16)
+    const method = `[${config.method.toUpperCase()}]`.padEnd(10)
+    const url = `${config.baseURL}${config.url}`
+    const title = `${tag}${method}${url}`
 
-//   // eslint-disable-next-line no-undef
-//   if (__DEV__) {
-//     const tag = 'Request'.padEnd(16)
-//     const method = `[${config.method.toUpperCase()}]`.padEnd(10)
-//     const url = `${config.baseURL}${config.url}`
-//     const title = `${tag}${method}${url}`
+    console.group(`%c ${title}`, ...['color: #03A9F4; font-weight: bold;'])
 
-//     console.group(`%c ${title}`, ...['color: #03A9F4; font-weight: bold;'])
+    config.headers && console.log('Headers'.padEnd(14), config.headers)
+    config.params && console.log('Param'.padEnd(14), config.params)
+    config.data && console.log('Body'.padEnd(14), config.data)
+    console.groupEnd()
+  }
+  return config
+})
 
-//     config.headers && console.log('Headers'.padEnd(14), config.headers)
-//     config.params && console.log('Param'.padEnd(14), config.params)
-//     config.data && console.log('Body'.padEnd(14), config.data)
-//     console.groupEnd()
-//   }
-//   return config
-// })
-
-apiAxiosInstance.interceptors.response.use(
+ApiInstance.interceptors.response.use(
   response => {
-    // eslint-disable-next-line no-undef
-    if (__DEV__) {
+    if (IS_STAGING) {
       const tag = 'Request Success'.padEnd(16)
       const method = `[${response.config.method.toUpperCase()}]`.padEnd(10)
       const url = `${response.config.url}`
@@ -52,15 +47,27 @@ apiAxiosInstance.interceptors.response.use(
   },
   error => {
     if (error.response) {
-      const errorData = error.response.data
-      const hasError = errorData && Array.isArray(errorData.errors) && errorData.errors.length
-      const errorResponse = hasError ? errorData.errors[0] : null
-      error.message = errorResponse ? errorResponse.message : 'Internal Error'
-      error.code = errorResponse ? errorResponse.code : 500
+      if (error.response && error.response.data) {
+        if (Array.isArray(error.response.data.errors) && error.response.data.errors.length) {
+          const serverError = error.response.data.errors[0]
+          error.message = `(${serverError.code}) - ${serverError.message}`
+          error.code = serverError.code
+        } else if (
+          typeof error.response.data.error === 'object' &&
+          error.response.data.error.message
+        ) {
+          const serverError = error.response.data.error
+          error = `(${serverError.code}) - ${serverError.message}`
+          error.code = serverError.code
+        }
+      }
+
+      if (error && error.code === 401) {
+        getStore().dispatch(logoutRequest())
+      }
     }
 
-    // eslint-disable-next-line no-undef
-    if (__DEV__) {
+    if (IS_STAGING) {
       const tag = 'Request Error'.padEnd(16)
       const method = `[${error.config.method.toUpperCase()}]`.padEnd(10)
       const url = `${error.config.url}`
@@ -78,4 +85,4 @@ apiAxiosInstance.interceptors.response.use(
   }
 )
 
-export default {}
+export default ApiInstance

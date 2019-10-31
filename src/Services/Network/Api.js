@@ -1,5 +1,5 @@
 import FirebaseHelper from 'Utils/FirebaseHelper'
-import { apiAxiosInstance } from './ApiInstance'
+import ApiInstance from './ApiInstance'
 
 export const login = async (email, password) => {
   const authUser = await FirebaseHelper.auth().signInWithEmailAndPassword(email, password)
@@ -11,10 +11,10 @@ export const logout = async () => {
   return authUser
 }
 
-export const getUserProfile = async () => await apiAxiosInstance.get('/api/users/my_profile')
+export const getLoads = params => ApiInstance.get('/api/v1/loads', params)
 
 export default {
   login,
   logout,
-  getUserProfile
+  getLoads
 }
