@@ -22,7 +22,7 @@ function* getLoadByIdSaga({ payload }) {
   try {
     yield put(loaderStart())
     const res = yield call(Api.getLoadById, payload)
-    yield put(actions.getLoadByIdSuccess(res.data))
+    yield put(actions.getLoadByIdSuccess(res))
     yield put(loaderEnd())
   } catch (error) {
     console.log(error)

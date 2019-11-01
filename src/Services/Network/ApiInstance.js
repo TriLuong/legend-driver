@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { getStore } from 'Store/Store'
 import { logoutRequest } from 'Store/auth/actions'
+import { loadState } from 'Utils/localStorage'
 
 const API_BASE_URL = 'https://legend-staging.firebaseapp.com'
 const API_REQUEST_TIMEOUT = 60000
@@ -10,6 +11,16 @@ const ApiInstance = Axios.create({
   baseURL: API_BASE_URL,
   timeout: API_REQUEST_TIMEOUT
 })
+
+const db = loadState()
+
+const { token } = db
+if (token) {
+  ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
+}
+if (token) {
+  ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
+}
 
 ApiInstance.interceptors.request.use(async config => {
   if (IS_STAGING) {
@@ -53,8 +64,8 @@ ApiInstance.interceptors.response.use(
           error.message = `(${serverError.code}) - ${serverError.message}`
           error.code = serverError.code
         } else if (
-          typeof error.response.data.error === 'object' &&
-          error.response.data.error.message
+          typeof error.response.data.error === 'object'
+          && error.response.data.error.message
         ) {
           const serverError = error.response.data.error
           error = `(${serverError.code}) - ${serverError.message}`

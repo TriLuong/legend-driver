@@ -6,11 +6,6 @@ function getLoadsSuccess(state, action) {
   return state
 }
 
-// function getLoadByIdSuccess(state, action) {
-//   state = action.payload
-//   return state
-// }
-
 // eslint-disable-next-line no-unused-vars
 const loadsReducer = createReducer(null, {
   [types.GET_LOADS_SUCCESS]: getLoadsSuccess,
