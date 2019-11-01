@@ -13,12 +13,16 @@ function* loginSaga({ payload }) {
     const { email, password } = payload
     const res = yield call(Api.login, email, password)
     const token = yield FirebaseHelper.currentUserToken()
-    // const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
-    // const role = currentIdTokenResult.claims.role
-    ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
-    yield put(actions.loginSuccess(token))
-    yield put(loaderEnd())
-    yield put(push('/'))
+    const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
+    const role = currentIdTokenResult.claims.role
+    if (role === 'Driver') {
+      ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
+      yield put(actions.loginSuccess(token))
+      yield put(loaderEnd())
+      yield put(push('/'))
+    } else {
+      throw new Error('Not Driver')
+    }
   } catch (error) {
     console.log(error)
     yield put(loaderEnd())
@@ -29,15 +33,16 @@ function* loginSaga({ payload }) {
 
 function* logoutSaga() {
   try {
+    console.log('LOGOUT')
+    ApiInstance.defaults.headers.common.Authorization = ''
+    yield put(push('/login'))
     yield put(loaderStart())
     yield call(Api.logout)
-    yield put(actions.loginFailure())
     yield put(loaderEnd())
     yield put(push('/login'))
   } catch (error) {
     yield put(loaderEnd())
     alert(error)
-    yield put(actions.loginFailure())
   }
 }
 

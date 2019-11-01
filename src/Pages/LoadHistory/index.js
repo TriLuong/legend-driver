@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
+
 import { Text } from 'Components/common'
 import classnames from 'classnames'
 import Assets from 'Assets'
@@ -15,34 +17,38 @@ import './styles.scss'
 
 const key = 'loads'
 
-const LoadHistory = () => {
+const LoadHistory = props => {
   useInjectSaga({ key, saga })
 
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
-  useEffect(() => dispatch(getLoads({ status: 'AssignedNotDelivered' })), [])
+  useEffect(() => dispatch(getLoads({ status: 'AssignedNotDelivered,PickedUpNotDelivered' })), [])
   const loads = useSelector(getLoadsSelector)
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)
     if (tab === '1') {
-      dispatch(getLoads({ status: 'AssignedNotDelivered' }))
+      dispatch(getLoads({ status: 'AssignedNotDelivered,PickedUpNotDelivered' }))
     } else if (tab === '2') {
       dispatch(getLoads({ status: 'Delivered' }))
     }
   }
 
   const onLogout = () => {
+    // const { history } = props
+    // history.push({
+    //   pathname: '/login'
+    // })
     dispatch(logoutRequest())
   }
 
   return (
     <div className="containerLoad d-flex flex-column">
-      <div className="containerHeader d-flex flex-row justify-content-between align-items-center">
-        <Text text="My Loads" />
-        <a href="#" className="logOut" onClick={onLogout}>
+      <div className="containerHeader d-flex flex-row justify-content-center align-items-center">
+        <Text text="My Loads" className="flex-grow-1" />
+        <button type="button" className="logOut" onClick={onLogout}>
           <img src={Assets.images.logoutIcon} className="imgLogout" />
-        </a>
+        </button>
       </div>
 
       <Nav tabs>

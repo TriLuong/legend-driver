@@ -25,7 +25,7 @@ const Login = () => {
   }
 
   return (
-    <div className="loginContainer d-flex justify-content-between flex-column">
+    <div className="loginContainer d-flex flex-column">
       <div className="containerHeader d-flex flex-row">
         <div className="loginHeader">
           <Text text="Log In" />

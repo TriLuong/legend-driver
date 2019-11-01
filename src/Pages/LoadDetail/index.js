@@ -36,7 +36,9 @@ const LoadDetail = props => {
         {loadById && (
           <>
             <Detail data={loadById} />
-            <Button text="Accept Load" onClick={() => onClick(loadId)} />
+            {loadById.status !== 'Delivered' && (
+              <Button text="Accept Load" onClick={() => onClick(loadId)} className="mb-2" />
+            )}
           </>
         )}
       </div>

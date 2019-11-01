@@ -16,8 +16,7 @@ function loginFailure(state, action) {
 
 const authReducer = createReducer(null, {
   [types.LOGIN_SUCCESS]: loginSuccess,
-  [types.LOGIN_FAILURE]: loginFailure,
-  [types.LOGOUT_SUCCESS]: loginFailure
+  [types.LOGIN_FAILURE]: loginFailure
 })
 
 export default authReducer

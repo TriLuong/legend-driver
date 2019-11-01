@@ -9,7 +9,7 @@ const Detail = ({ data }) => {
   console.log('Deatil', data)
   const date = moment(data.appointmentTime).format('MMM DD, YYYY')
   const time = moment(data.appointmentTime).format('HH:mm')
-  const containerType = data.containerType || 'None'
+  const containerPieceType = data.containerPieceType || 'None'
   const locationDropOff = data.location || 'None'
   return (
     <div className="contentLoad">
@@ -21,7 +21,7 @@ const Detail = ({ data }) => {
         <div className="sectionItem d-flex justify-content-between align-items-center">
           <TextLoadTitle text="Type" />
           <Badge color="primary" className="loadType">
-            {containerType}
+            {containerPieceType}
           </Badge>
         </div>
         <div className="sectionItem d-flex justify-content-between align-items-center">

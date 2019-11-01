@@ -5,6 +5,9 @@
 
   .containerHeader {
     padding: 63px 24px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
 
     .logOut {
       width: 48px;
@@ -17,7 +20,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+      border: none;
+      outline: none;
       &:hover {
         background-color: rgba(0, 0, 0, 0.2);
       }
@@ -84,6 +88,10 @@
   flex: 1;
   padding-top: 52px;
   background-color: var(--pale-grey);
+  max-width: 500px;
+  width: 100%;
+  align-self: center;
+  border-radius: 12px;
 }
 
 .headerDate {

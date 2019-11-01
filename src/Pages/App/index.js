@@ -6,6 +6,8 @@ import { getTokenSelector } from 'Store/auth/selectors'
 import Loader from 'Pages/Loader'
 import RoutesName from './RoutesName'
 
+const NotFound = () => <div>NOT FOUND</div>
+
 function App() {
   const token = useSelector(getTokenSelector)
   return (
@@ -13,10 +15,16 @@ function App() {
       <Switch>
         {RoutesName.map((route, index) => {
           const { path, component } = route
-          return <Route key={index} exact path={path} component={component} />
+          return <Route exact key={index} path={path} component={component} />
         })}
-        {!token && <Redirect to="/login" />}
-        <Route path="/error" />
+        {!token && (
+          <Redirect
+            to={{
+              pathname: '/login'
+            }}
+          />
+        )}
+        <Route path="" component={NotFound} />
       </Switch>
       <Loader />
     </Layout>

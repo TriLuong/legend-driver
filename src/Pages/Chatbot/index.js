@@ -12,12 +12,12 @@ const Chatbot = props => {
   const { loadId } = match.params
   const token = useSelector(getTokenSelector)
   const srcIframe = `${sourceChatbot}?token=${token}&load_id=${loadId}&uri_login=${uriLogin}`
-  console.log(token)
+  console.log(token, loadId)
   const onLoad = () => {
     setIsLoading(false)
   }
   return (
-    <div>
+    <>
       {isLoading && (
         <>
           <div className="loading" />
@@ -25,7 +25,7 @@ const Chatbot = props => {
         </>
       )}
       <iframe title="Chatbot" src={srcIframe} className="chatbot w-100 vh-100" onLoad={onLoad} />
-    </div>
+    </>
   )
 }
 
