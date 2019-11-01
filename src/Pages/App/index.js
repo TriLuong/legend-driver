@@ -16,6 +16,7 @@ function App() {
   return (
     <Layout>
       <Switch>
+        <Redirect exact from="/" to="/driver" />
         {RoutesName.map((route, index) => {
           const { path, component } = route
           return <Route exact key={index} path={path} component={component} />

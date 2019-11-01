@@ -4,8 +4,8 @@ import { getTokenSelector } from 'Store/auth/selectors'
 import './styles.scss'
 
 const sourceChatbot = 'https://landbot.io/u/H-291303-WLRCM6ZR74RVGHGG/index.html'
-const uriLogin = 'http://localhost:3000/login'
-const uriHome = 'http://localhost:3000/driver'
+const uriLogin = 'http://legend-staging-driver.web.app/login'
+const uriHome = 'http://legend-staging-driver.web.app/driver'
 
 const Chatbot = props => {
   const [isLoading, setIsLoading] = useState(true)
