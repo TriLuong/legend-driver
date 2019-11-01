@@ -19,7 +19,7 @@ function* loginSaga({ payload }) {
       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
       yield put(actions.loginSuccess(token))
       yield put(loaderEnd())
-      yield put(push('/'))
+      yield put(push('/driver'))
     } else {
       throw new Error('Not Driver')
     }

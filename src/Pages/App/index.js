@@ -4,8 +4,8 @@ import Layout from 'Layout'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { getTokenSelector } from 'Store/auth/selectors'
 import Loader from 'Pages/Loader'
-import RoutesName from './RoutesName'
 import { useInjectSaga } from 'redux-injectors'
+import RoutesName from './RoutesName'
 import loginSaga from '../Login/saga'
 
 const NotFound = () => <div>NOT FOUND</div>

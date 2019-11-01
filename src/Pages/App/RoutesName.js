@@ -9,7 +9,7 @@ export const RoutesName = [
     component: Login
   },
   {
-    path: '/',
+    path: '/driver',
     component: LoadHistory
   },
   {
