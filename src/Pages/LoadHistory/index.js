@@ -8,18 +8,15 @@ import { useInjectSaga } from 'redux-injectors'
 import { logoutRequest } from 'Store/auth/actions'
 import { getLoads } from 'Store/loads/actions'
 import { getLoadsSelector } from 'Store/loads/selectors'
-import saga from 'Pages/Login/saga'
-import sagaLoads from './saga'
+import saga from './saga'
 import TodayLoads from './TodayLoads'
 import PastLoads from './PastLoads'
 import './styles.scss'
 
-const key = 'logout'
-const keyLoads = 'loads'
+const key = 'loads'
 
 const LoadHistory = () => {
   useInjectSaga({ key, saga })
-  useInjectSaga({ key: keyLoads, saga: sagaLoads })
 
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
