@@ -11,6 +11,7 @@ import { getLoadsSelector } from 'Store/loads/selectors'
 import saga from 'Pages/Login/saga'
 import sagaLoads from './saga'
 import TodayLoads from './TodayLoads'
+import PastLoads from './PastLoads'
 import './styles.scss'
 
 const key = 'logout'
@@ -22,11 +23,16 @@ const LoadHistory = () => {
 
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
-  useEffect(() => dispatch(getLoads({})), [])
+  useEffect(() => dispatch(getLoads({ status: 'AssignedNotDelivered' })), [])
   const loads = useSelector(getLoadsSelector)
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)
+    if (tab === '1') {
+      dispatch(getLoads({ status: 'AssignedNotDelivered' }))
+    } else if (tab === '2') {
+      dispatch(getLoads({ status: 'Delivered' }))
+    }
   }
 
   const onLogout = () => {
@@ -70,11 +76,7 @@ const LoadHistory = () => {
           <TodayLoads data={loads} />
         </TabPane>
         <TabPane tabId="2">
-          <Row>
-            <Col sm="12">
-              <h4>Tab 2 Contents</h4>
-            </Col>
-          </Row>
+          <PastLoads data={loads} />
         </TabPane>
       </TabContent>
     </div>

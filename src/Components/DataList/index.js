@@ -8,6 +8,7 @@ const DataList = ({ data }) => {
   const date = moment(data.appointmentTime).format('MM/DD/YYYY')
   const time = moment(data.appointmentTime).format('HH:mm')
   const containerType = data.containerType || 'None'
+
   return (
     <Link to={`/loadDetail/${data.id}`} className="row loadItemLink">
       <div className="col-2">

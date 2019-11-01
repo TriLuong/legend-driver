@@ -7,7 +7,8 @@ import { loaderStart, loaderEnd } from 'Store/loader/actions'
 function* getLoadsSaga({ payload }) {
   try {
     yield put(loaderStart())
-    const res = yield call(Api.getLoads, payload)
+    console.log('getLoadsSaga', payload)
+    const res = yield call(Api.getLoads, { params: payload })
     yield put(actions.getLoadsSuccess(res.data))
     yield put(loaderEnd())
   } catch (error) {
