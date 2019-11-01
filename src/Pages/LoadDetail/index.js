@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useInjectSaga } from 'redux-injectors'
-import saga from 'Pages/LoadHistory/saga'
-import { getLoadById } from 'Store/loads/actions'
-import { getLoadsSelector } from 'Store/loads/selectors'
-import { Badge } from 'reactstrap'
-import { IconCircle, TextLoadTitle, TextSub, Button } from 'Components/common'
+import { getLoadById } from 'Store/loadById/actions'
+import { getLoadByIdSelector } from 'Store/loadById/selectors'
+import { Button } from 'Components/common'
 import Detail from 'Components/Detail'
 import Assets from 'Assets'
+import saga from './saga'
 import './styles.scss'
 
 const key = 'loadDetail'
@@ -21,7 +20,7 @@ const LoadDetail = props => {
   useEffect(() => {
     dispatch(getLoadById(loadId))
   }, [])
-  const loadById = useSelector(getLoadsSelector)
+  const loadById = useSelector(getLoadByIdSelector)
 
   const onClick = loadId => {
     const { history } = props

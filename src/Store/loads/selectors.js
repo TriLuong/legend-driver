@@ -7,9 +7,4 @@ export const getLoadsSelector = createSelector(
   data => data
 )
 
-// export const getLoadByIdSelector = createSelector(
-//   loadsReducer,
-//   data => data.load
-// )
-
 export default { getLoadsSelector }

@@ -7,8 +7,8 @@ function getLoadsSuccess(state, action) {
 }
 
 // eslint-disable-next-line no-unused-vars
-const loadsReducer = createReducer(null, {
-  [types.GET_LOADS_SUCCESS]: getLoadsSuccess
+const loadByIdReducer = createReducer(null, {
+  [types.GET_LOAD_BY_ID_SUCCESS]: getLoadsSuccess
 })
 
-export default loadsReducer
+export default loadByIdReducer
