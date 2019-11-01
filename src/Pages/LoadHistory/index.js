@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
-import { Link } from 'react-router-dom'
-
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
 import { Text } from 'Components/common'
 import classnames from 'classnames'
 import Assets from 'Assets'
@@ -17,13 +15,16 @@ import './styles.scss'
 
 const key = 'loads'
 
-const LoadHistory = props => {
+const LoadHistory = () => {
   useInjectSaga({ key, saga })
 
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
-  useEffect(() => dispatch(getLoads({ status: 'AssignedNotDelivered,PickedUpNotDelivered' })), [])
   const loads = useSelector(getLoadsSelector)
+
+  useEffect(() => {
+    dispatch(getLoads({ status: 'AssignedNotDelivered,PickedUpNotDelivered' }))
+  }, [])
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab)

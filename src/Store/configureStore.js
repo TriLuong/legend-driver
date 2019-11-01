@@ -46,9 +46,9 @@ export function configureStore(history) {
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions)
 
   const middleware = [sagaMiddleware, routerMiddleware(history)]
-  // if (process.env.NODE_ENV !== 'production') {
-  //   middleware.push(require('redux-logger').createLogger())
-  // }
+  if (process.env.NODE_ENV !== 'production') {
+    middleware.push(require('redux-logger').createLogger())
+  }
 
   const runSaga = sagaMiddleware.run
 
