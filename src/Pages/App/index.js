@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux'
 import Layout from 'Layout'
 import { Switch, Route, Redirect } from 'react-router-dom'
@@ -7,28 +8,24 @@ import Loader from 'Pages/Loader'
 import { useInjectSaga } from 'redux-injectors'
 import RoutesName from './RoutesName'
 import loginSaga from '../Login/saga'
-
-const NotFound = () => <div>NOT FOUND</div>
+import PrivateRoute from './PrivateRoute'
+import Login from 'Pages/Login'
 
 function App() {
   const token = useSelector(getTokenSelector)
   useInjectSaga({ key: 'login', saga: loginSaga })
   return (
     <Layout>
+      <Helmet titleTemplate="%s - Legend" defaultTitle="Legend">
+          <meta name="description" content="Legend" />
+        </Helmet>
       <Switch>
-        <Redirect exact from="/" to="/driver" />
+        <Route exact path="/login" component={Login} />
         {RoutesName.map((route, index) => {
-          const { path, component } = route
-          return <Route exact key={index} path={path} component={component} />
-        })}
-        {!token && (
-          <Redirect
-            to={{
-              pathname: '/login'
-            }}
-          />
-        )}
-        <Route path="" component={NotFound} />
+              const { path, component } = route;
+              return <PrivateRoute key={index} exact path={path} component={component} />;
+            })}
+        <Redirect path="" to="/driver" />
       </Switch>
       <Loader />
     </Layout>
