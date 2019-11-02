@@ -12,6 +12,7 @@ import saga from './saga'
 import TodayLoads from './TodayLoads'
 import PastLoads from './PastLoads'
 import './styles.scss'
+import moment from 'moment'
 
 const key = 'loads'
 
@@ -21,6 +22,7 @@ const LoadHistory = () => {
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState('1')
   const loads = useSelector(getLoadsSelector)
+  const today = moment().format('dddd, MMM Do')
 
   useEffect(() => {
     dispatch(getLoads({ status: 'AssignedNotDelivered,PickedUpNotDelivered' }))
@@ -36,15 +38,11 @@ const LoadHistory = () => {
   }
 
   const onLogout = () => {
-    // const { history } = props
-    // history.push({
-    //   pathname: '/login'
-    // })
     dispatch(logoutRequest())
   }
 
   return (
-    <div className="containerLoad d-flex flex-column">
+    <div className="d-flex flex-column min-vh-100">
       <div className="containerHeader d-flex flex-row justify-content-center align-items-center">
         <Text text="My Loads" className="flex-grow-1" />
         <button type="button" className="logOut" onClick={onLogout}>
@@ -52,37 +50,47 @@ const LoadHistory = () => {
         </button>
       </div>
 
-      <Nav tabs>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '1' })}
-            onClick={() => {
-              toggle('1')
-            }}
-          >
-            TODAY
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '2' })}
-            onClick={() => {
-              toggle('2')
-            }}
-          >
-            PAST LOADS
-          </NavLink>
-        </NavItem>
-      </Nav>
+      <div className="containerNav d-flex flex-column">
+        <Nav tabs>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === '1' })}
+              onClick={() => {
+                toggle('1')
+              }}
+            >
+              TODAY
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === '2' })}
+              onClick={() => {
+                toggle('2')
+              }}
+            >
+              PAST LOADS
+            </NavLink>
+          </NavItem>
+        </Nav>
 
-      <TabContent activeTab={activeTab} className="tabContent">
-        <TabPane tabId="1">
-          <TodayLoads data={loads} />
-        </TabPane>
-        <TabPane tabId="2">
-          <PastLoads data={loads} />
-        </TabPane>
-      </TabContent>
+        <TabContent activeTab={activeTab} className="tabContent">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-12">
+                <h4 className="headerDate">{activeTab === '1' ? today : ''}</h4>
+              </div>
+            </div>
+
+            <TabPane tabId="1">
+              <TodayLoads data={loads} />
+            </TabPane>
+            <TabPane tabId="2">
+              <PastLoads data={loads} />
+            </TabPane>
+          </div>
+        </TabContent>
+      </div>
     </div>
   )
 }

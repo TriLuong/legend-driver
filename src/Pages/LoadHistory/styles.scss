@@ -1,39 +1,37 @@
-.containerLoad {
-  padding: 0;
-  margin: 0;
-  height: 100vh;
+.containerHeader {
+  padding: 63px 24px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
 
-  .containerHeader {
-    padding: 63px 24px;
-    max-width: 500px;
-    width: 100%;
-    margin: auto;
-
-    .logOut {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 24px;
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      background-color: rgba(0, 0, 0, 0.12);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      outline: none;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.2);
-      }
-    }
-
-    .imgLogout {
-      width: 16px;
-      height: 16px;
-      -webkit-filter: invert(1);
-      filter: invert(1);
+  .logOut {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
     }
   }
+
+  .imgLogout {
+    width: 16px;
+    height: 16px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+  }
+}
+
+.containerNav {
+  flex: 1;
 }
 
 .nav-tabs {

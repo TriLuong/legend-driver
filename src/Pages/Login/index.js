@@ -25,14 +25,10 @@ const Login = () => {
   }
 
   return (
-    <div className="loginContainer d-flex flex-column">
+    <div className="loginContainer">
       <div className="containerHeader d-flex flex-row">
-        <div className="loginHeader">
-          <Text text="Log In" />
-        </div>
-        <div>
-          <img src={Assets.images.icon} />
-        </div>
+        <Text text="Log In" />
+        <img src={Assets.images.icon} />
       </div>
       <Formik initialValues={{ email, password }} onSubmit={onSubmit}>
         {({ setFieldValue, handleSubmit, values }) => (

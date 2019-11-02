@@ -6,11 +6,6 @@
   .containerHeader {
     justify-content: center;
     align-items: center;
-    padding-left: 24px;
-    padding-right: 40px;
-    .loginHeader {
-      padding: 80px 0;
-    }
   }
 
   .containterInput {
@@ -22,5 +17,6 @@
     background-color: var(--white);
     text-align: center;
     padding: 40px 24px;
+    margin: auto;
   }
 }
