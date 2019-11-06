@@ -8,11 +8,11 @@ import { useInjectSaga } from 'redux-injectors'
 import { logoutRequest } from 'Store/auth/actions'
 import { getLoads } from 'Store/loads/actions'
 import { getLoadsSelector } from 'Store/loads/selectors'
+import moment from 'moment'
 import saga from './saga'
 import TodayLoads from './TodayLoads'
 import PastLoads from './PastLoads'
 import './styles.scss'
-import moment from 'moment'
 
 const key = 'loads'
 
@@ -75,20 +75,29 @@ const LoadHistory = () => {
         </Nav>
 
         <TabContent activeTab={activeTab} className="tabContent">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12">
-                <h4 className="headerDate">{activeTab === '1' ? today : ''}</h4>
+          <TabPane tabId="1">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12">
+                  <h4 className="headerDate">{activeTab === '1' ? today : ''}</h4>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-12">
+                  <TodayLoads data={loads} />
+                </div>
               </div>
             </div>
-
-            <TabPane tabId="1">
-              <TodayLoads data={loads} />
-            </TabPane>
-            <TabPane tabId="2">
-              <PastLoads data={loads} />
-            </TabPane>
-          </div>
+          </TabPane>
+          <TabPane tabId="2">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12">
+                  <PastLoads data={loads} />
+                </div>
+              </div>
+            </div>
+          </TabPane>
         </TabContent>
       </div>
     </div>
