@@ -1,15 +1,16 @@
 import React from 'react'
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
 import Layout from 'Layout'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { getTokenSelector } from 'Store/auth/selectors'
 import Loader from 'Pages/Loader'
 import { useInjectSaga } from 'redux-injectors'
+import Login from 'Pages/Login'
 import RoutesName from './RoutesName'
 import loginSaga from '../Login/saga'
 import PrivateRoute from './PrivateRoute'
-import Login from 'Pages/Login'
+import RedirectHome from './RedirectHome'
 
 function App() {
   const token = useSelector(getTokenSelector)
@@ -17,14 +18,14 @@ function App() {
   return (
     <Layout>
       <Helmet titleTemplate="%s - Legend" defaultTitle="Legend">
-          <meta name="description" content="Legend" />
-        </Helmet>
+        <meta name="description" content="Legend" />
+      </Helmet>
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <RedirectHome exact path="/login" component={Login} />
         {RoutesName.map((route, index) => {
-              const { path, component } = route;
-              return <PrivateRoute key={index} exact path={path} component={component} />;
-            })}
+          const { path, component } = route
+          return <PrivateRoute key={index} exact path={path} component={component} />
+        })}
         <Redirect path="" to="/driver" />
       </Switch>
       <Loader />

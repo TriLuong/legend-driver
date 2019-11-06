@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { getTokenSelector } from 'Store/auth/selectors'
 
-const PrivateRoute = ({ component: Component, token, ...rest }) => (
+const RedirectHome = ({ component: Component, token, ...rest }) => (
   <Route
     {...rest}
-    render={props => (token ? (
+    render={props => (!token ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: '/driver',
             state: { from: props.location }
           }}
         />
@@ -23,4 +23,4 @@ const mapStateToProps = createStructuredSelector({
   token: getTokenSelector
 })
 
-export default connect(mapStateToProps)(PrivateRoute)
+export default connect(mapStateToProps)(RedirectHome)
