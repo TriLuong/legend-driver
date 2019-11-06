@@ -15,7 +15,7 @@ const DataList = ({ data }) => {
         <img src={Assets.images.loadLeftIcon} />
       </div>
       <div className="col-10">
-        <h4 className="loadId">{`#${data.container}`}</h4>
+        <h4 className="loadId">{`#${data.reservation}`}</h4>
         <p className="loadDetail">{`${containerType} • ${date} • ${time}`}</p>
       </div>
     </Link>

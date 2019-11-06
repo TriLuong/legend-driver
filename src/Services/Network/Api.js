@@ -16,7 +16,7 @@ export const logout = async () => {
 }
 
 export const getLoads = params => ApiInstance.get('/api/v1/loads', params)
-export const getLoadById = id => ApiInstance.get(`/api/v1/chats/${id}`)
+export const getLoadById = id => ApiInstance.get(`/api/v1/loads/${id}`)
 
 export default {
   login,

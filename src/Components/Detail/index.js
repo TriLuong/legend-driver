@@ -11,10 +11,11 @@ const Detail = ({ data }) => {
   const time = moment(data.appointmentTime).format('HH:mm')
   const containerPieceType = data.containerPieceType || 'None'
   const locationDropOff = data.location || 'None'
+  const locationPickUp = (data.chat && data.chat.location) || 'None'
   return (
     <div className="contentLoad">
       <div className="contentSection d-flex justify-content-between align-items-center">
-        <p className="contentLoadId">{`#${data.container}`}</p>
+        <p className="contentLoadId">{`#${data.reservation}`}</p>
         <IconCircle src={Assets.images.phoneIcon} />
       </div>
       <div className="contentSection ">
@@ -39,7 +40,7 @@ const Detail = ({ data }) => {
           <IconCircle src={Assets.images.navigatorIcon} />
         </div>
         <div className="sectionItem d-flex justify-content-between align-items-center">
-          <TextSub text={locationDropOff} className="loadAddress" />
+          <TextSub text={locationPickUp} className="loadAddress" />
         </div>
       </div>
       <div className="contentSection ">
