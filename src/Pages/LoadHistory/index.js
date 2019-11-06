@@ -59,6 +59,7 @@ const LoadHistory = () => {
                 toggle('1')
               }}
             >
+              <div className={`dotNav ${activeTab === '1' ? 'activeDotNav' : ''}`} />
               TODAY
             </NavLink>
           </NavItem>
@@ -69,6 +70,7 @@ const LoadHistory = () => {
                 toggle('2')
               }}
             >
+              <div className={`dotNav ${activeTab === '2' ? 'activeDotNav' : ''}`} />
               PAST LOADS
             </NavLink>
           </NavItem>

@@ -34,6 +34,18 @@
   flex: 1;
 }
 
+.dotNav {
+  width: 10px;
+  height: 10px;
+  background-color: var(--electric-purple);
+  border-radius: 50%;
+  margin-right: 5px;
+  visibility: hidden;
+}
+.activeDotNav {
+  visibility: visible;
+}
+
 .nav-tabs {
   justify-content: center;
   background-color: transparent;
@@ -58,6 +70,9 @@
       text-align: center;
       color: var(--cool-grey);
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .active {
