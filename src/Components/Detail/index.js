@@ -9,9 +9,9 @@ const Detail = ({ data }) => {
   console.log('Deatil', data)
   const date = moment(data.appointmentTime).format('MMM DD, YYYY')
   const time = moment(data.appointmentTime).format('HH:mm')
-  const containerPieceType = data.containerPieceType || 'None'
-  const locationDropOff = data.location || 'None'
-  const locationPickUp = (data.chat && data.chat.location) || 'None'
+  const containerPieceType = data.chat.containerPieceType || 'None'
+  const locationDropOff = data.dropOffLocation || 'None'
+  const locationPickUp = data.pickUpLocation || 'None'
   return (
     <div className="contentLoad">
       <div className="contentSection d-flex justify-content-between align-items-center">
