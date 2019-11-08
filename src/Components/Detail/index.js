@@ -9,7 +9,7 @@ const Detail = ({ data }) => {
   console.log('Deatil', data)
   const date = moment(data.appointmentTime).format('MMM DD, YYYY')
   const time = moment(data.appointmentTime).format('HH:mm')
-  const containerPieceType = data.chat.containerPieceType || 'None'
+  const containerPieceType = (data.chat && data.chat.containerPieceType) || 'None'
   const locationDropOff = data.dropOffLocation || 'None'
   const locationPickUp = data.pickUpLocation || 'None'
   return (
