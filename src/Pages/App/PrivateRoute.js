@@ -7,7 +7,8 @@ import { getTokenSelector } from 'Store/auth/selectors'
 const PrivateRoute = ({ component: Component, token, ...rest }) => (
   <Route
     {...rest}
-    render={props => (token ? (
+    render={props =>
+      token ? (
         <Component {...props} />
       ) : (
         <Redirect
@@ -16,7 +17,8 @@ const PrivateRoute = ({ component: Component, token, ...rest }) => (
             state: { from: props.location }
           }}
         />
-      ))}
+      )
+    }
   />
 )
 const mapStateToProps = createStructuredSelector({

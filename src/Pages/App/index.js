@@ -13,7 +13,6 @@ import PrivateRoute from './PrivateRoute'
 import RedirectHome from './RedirectHome'
 
 function App() {
-  const token = useSelector(getTokenSelector)
   useInjectSaga({ key: 'login', saga: loginSaga })
   return (
     <Layout>
@@ -25,6 +24,7 @@ function App() {
           const { path, component } = route
           return <PrivateRoute key={index} exact path={path} component={component} />
         })}
+        <RedirectHome path="/user" component={Login} />
         <Route path="/user" render={props => <Login {...props} />} />
         <Redirect path="" to="/driver" />
       </Switch>

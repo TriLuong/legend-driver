@@ -12,7 +12,7 @@ const ViewLogin = ({ match }) => {
   return (
     <Switch>
       <Redirect exact from={`${match.url}/`} to={`${match.url}/login`} />
-      <Route exact path={`${match.url}/login`} render={props => <Login {...props} />} />
+      <Route path={`${match.url}/login`} render={props => <Login {...props} />} />
       <Route path={`${match.url}/forgotPassword`} render={props => <ForgotPassword {...props} />} />
       <Route path={`${match.url}/resetPassword`} render={props => <ResetPassword {...props} />} />
     </Switch>
