@@ -12,8 +12,8 @@ const key = 'login'
 
 const ResetPassword = () => {
   useInjectSaga({ key, saga })
-  const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
+  const [newPasswordAgain, setNewPasswordAgain] = useState('')
   const dispatch = useDispatch()
 
   const onChange = (name, value, setFieldValue) => {
@@ -31,22 +31,22 @@ const ResetPassword = () => {
         <Text text="Reset Password" />
         <img src={Assets.images.icon} />
       </div>
-      <Formik initialValues={{ oldPassword, newPassword }} onSubmit={onSubmit}>
+      <Formik initialValues={{ newPassword, newPasswordAgain }} onSubmit={onSubmit}>
         {({ setFieldValue, handleSubmit, values }) => (
           <form className="containterInput" onSubmit={handleSubmit}>
-            <InputText
-              type="password"
-              placeholder="Old Password"
-              name="oldPassword"
-              value={values.oldPassword}
-              onChange={(name, value) => onChange(name, value, setFieldValue)}
-              className="mb-2"
-            />
             <InputText
               type="password"
               placeholder="New Password"
               name="newPassword"
               value={values.newPassword}
+              onChange={(name, value) => onChange(name, value, setFieldValue)}
+              className="mb-2"
+            />
+            <InputText
+              type="password"
+              placeholder="New Password Again"
+              name="newPasswordAgain"
+              value={values.newPasswordAgain}
               onChange={(name, value) => onChange(name, value, setFieldValue)}
               className="mb-2"
             />
