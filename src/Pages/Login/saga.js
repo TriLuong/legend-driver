@@ -35,11 +35,10 @@ function* logoutSaga() {
   try {
     console.log('LOGOUT')
     ApiInstance.defaults.headers.common.Authorization = ''
-    yield put(push('/login'))
     yield put(loaderStart())
     yield call(Api.logout)
     yield put(loaderEnd())
-    yield put(push('/login'))
+    yield put(push('/user/login'))
   } catch (error) {
     yield put(loaderEnd())
     alert(error)

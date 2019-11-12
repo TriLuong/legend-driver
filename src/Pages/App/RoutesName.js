@@ -1,7 +1,7 @@
 import LoadHistory from 'Pages/LoadHistory'
 import LoadDetail from 'Pages/LoadDetail'
 import Chatbot from 'Pages/Chatbot'
-import { ResetPassword, ForgotPassword } from 'Pages/Login'
+// import { ResetPassword, ForgotPassword } from 'Pages/Login'
 
 export const RoutesName = [
   {
@@ -15,15 +15,15 @@ export const RoutesName = [
   {
     path: '/chatbot/:loadId',
     component: Chatbot
-  },
-  {
-    path: '/resetPassword',
-    component: ResetPassword
-  },
-  {
-    path: '/forgotPassword',
-    component: ForgotPassword
   }
+  // {
+  //   path: '/resetPassword',
+  //   component: ResetPassword
+  // },
+  // {
+  //   path: '/forgotPassword',
+  //   component: ForgotPassword
+  // }
 ]
 
 export default RoutesName

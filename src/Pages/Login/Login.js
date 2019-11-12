@@ -10,7 +10,7 @@ import saga from './saga'
 import './styles.scss'
 
 const key = 'login'
-const Login = () => {
+const Login = ({ match }) => {
   useInjectSaga({ key, saga })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -55,7 +55,7 @@ const Login = () => {
             </form>
           )}
         </Formik>
-        <Link to="/forgotPassword" className="forgetPassword">
+        <Link to="/user/forgotPassword" className="forgetPassword">
           Forgot Password?
         </Link>
       </div>

@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { getTokenSelector } from 'Store/auth/selectors'
 import Loader from 'Pages/Loader'
 import { useInjectSaga } from 'redux-injectors'
-import { Login } from 'Pages/Login'
+import Login from 'Pages/Login'
 import RoutesName from './RoutesName'
 import loginSaga from '../Login/saga'
 import PrivateRoute from './PrivateRoute'
@@ -21,11 +21,11 @@ function App() {
         <meta name="description" content="Legend" />
       </Helmet>
       <Switch>
-        <RedirectHome exact path="/login" component={Login} />
         {RoutesName.map((route, index) => {
           const { path, component } = route
           return <PrivateRoute key={index} exact path={path} component={component} />
         })}
+        <Route path="/user" render={props => <Login {...props} />} />
         <Redirect path="" to="/driver" />
       </Switch>
       <Loader />
