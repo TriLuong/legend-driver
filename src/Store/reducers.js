@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import history from 'Utils/history'
 import authReducer from './auth/reducer'
+import userReducer from './user/reducer'
 import loadsReducer from './loads/reducer'
 import loadById from './loadById/reducer'
 import loaderReducer from './loader/reducer'
@@ -10,6 +11,7 @@ import { LOGOUT_REQUEST } from './auth/constanst'
 export default function createReducer(injectedReducers = {}) {
   const appReducer = combineReducers({
     token: authReducer,
+    user: userReducer,
     loadsReducer,
     loaderReducer,
     loadById,

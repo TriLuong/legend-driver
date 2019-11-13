@@ -3,6 +3,7 @@ import { push } from 'connected-react-router'
 import ApiInstance from 'Services/Network/ApiInstance'
 import Api from 'Services/Network/Api'
 import actions from 'Store/auth/actions'
+import actionsUser from 'Store/user/actions'
 import types from 'Store/auth/constanst'
 import FirebaseHelper from 'Utils/FirebaseHelper'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
@@ -41,6 +42,7 @@ function* loginSaga({ payload }) {
       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
       if (role === 'Driver') {
         yield put(actions.loginSuccess(res.token))
+        yield put(actionsUser.getUserSuccess(res))
         yield put(loaderEnd())
         yield put(push('/'))
       } else {
@@ -53,6 +55,7 @@ function* loginSaga({ payload }) {
     yield put(loaderEnd())
     alert(error)
     yield put(actions.loginFailure(error))
+    yield put(actionsUser.getUserFailure(error))
   }
 }
 
