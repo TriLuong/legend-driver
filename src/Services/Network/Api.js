@@ -25,5 +25,6 @@ export default {
   login,
   logout,
   getLoads,
-  getLoadById
+  getLoadById,
+  forgotPassword
 }

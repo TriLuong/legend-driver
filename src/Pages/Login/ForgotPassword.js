@@ -4,16 +4,14 @@ import { Formik } from 'formik'
 import { InputText, Button, Text } from 'Components/common'
 import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
-import { loginRequest } from 'Store/auth/actions'
+import { forgotPassword } from 'Store/auth/actions'
 import saga from './saga'
 import './styles.scss'
 
-const key = 'login'
+const redirectURL = 'http://localhost:3001/user/login'
 
 const ForgotPassword = () => {
-  useInjectSaga({ key, saga })
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const dispatch = useDispatch()
 
   const onChange = (name, value, setFieldValue) => {
@@ -21,8 +19,7 @@ const ForgotPassword = () => {
   }
 
   const onSubmit = values => {
-    console.log(values)
-    // dispatch(loginRequest(values))
+    dispatch(forgotPassword({ ...values, redirectURL }))
   }
 
   return (
@@ -31,7 +28,7 @@ const ForgotPassword = () => {
         <Text text="Forgot Password" />
         <img src={Assets.images.icon} />
       </div>
-      <Formik initialValues={{ email, password }} onSubmit={onSubmit}>
+      <Formik initialValues={{ email }} onSubmit={onSubmit}>
         {({ setFieldValue, handleSubmit, values }) => (
           <form className="containterInput" onSubmit={handleSubmit}>
             <InputText

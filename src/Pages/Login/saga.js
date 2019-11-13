@@ -70,7 +70,27 @@ function* logoutSaga() {
   }
 }
 
+function* forgotPassword({ payload }) {
+  // const { email } = payload.forgotUserMail;
+  try {
+    yield put(loaderStart())
+    const res = yield call(Api.forgotPassword, payload)
+    if (!res.code) {
+      yield put(loaderEnd())
+      yield put(actions.forgotPasswordSuccess())
+      alert(res.message)
+    } else {
+      throw new Error(res.message)
+    }
+  } catch (error) {
+    yield put(loaderEnd())
+    alert(error)
+    yield put(actions.forgotPasswordFailure(error.response.data.message))
+  }
+}
+
 export default function* loginWatcher() {
   yield takeLatest(types.LOGIN_REQUEST, loginSaga)
   yield takeLatest(types.LOGOUT_REQUEST, logoutSaga)
+  yield takeLatest(types.FORGOT_PASSWORD, forgotPassword)
 }
