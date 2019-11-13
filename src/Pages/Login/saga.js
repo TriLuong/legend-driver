@@ -7,24 +7,49 @@ import types from 'Store/auth/constanst'
 import FirebaseHelper from 'Utils/FirebaseHelper'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
 
+// function* loginSaga({ payload }) {
+//   try {
+//     yield put(loaderStart())
+//     const { email, password } = payload
+//     const res = yield call(Api.login, email, password)
+//     const token = yield FirebaseHelper.currentUserToken()
+//     const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
+//     const role = currentIdTokenResult.claims.role
+//     if (role === 'Driver') {
+//       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
+//       yield put(actions.loginSuccess(token))
+//       yield put(loaderEnd())
+//       yield put(push('/'))
+//     } else {
+//       throw new Error('Not Driver')
+//     }
+//   } catch (error) {
+//     console.log(error)
+//     yield put(loaderEnd())
+//     alert(error)
+//     yield put(actions.loginFailure(error))
+//   }
+// }
+
 function* loginSaga({ payload }) {
   try {
     yield put(loaderStart())
-    const { email, password } = payload
-    const res = yield call(Api.login, email, password)
-    const token = yield FirebaseHelper.currentUserToken()
-    const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
-    const role = currentIdTokenResult.claims.role
-    if (role === 'Driver') {
+    const res = yield call(Api.login, payload)
+    if (!res.message) {
+      const token = res.token
+      const role = res.role
       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
-      yield put(actions.loginSuccess(token))
-      yield put(loaderEnd())
-      yield put(push('/'))
+      if (role === 'Driver') {
+        yield put(actions.loginSuccess(res.token))
+        yield put(loaderEnd())
+        yield put(push('/'))
+      } else {
+        throw new Error('Only DRIVER can access!!!')
+      }
     } else {
-      throw new Error('Not Driver')
+      throw new Error(res.message)
     }
   } catch (error) {
-    console.log(error)
     yield put(loaderEnd())
     alert(error)
     yield put(actions.loginFailure(error))
