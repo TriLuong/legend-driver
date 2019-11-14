@@ -30,4 +30,12 @@
     letter-spacing: -0.22px;
     color: var(--charcoal-grey);
   }
+  .statusContainer {
+    text-align: center;
+    margin: auto;
+    padding-left: 0;
+    .statusText {
+      font-family: SFProDisplay-Bold;
+    }
+  }
 }
