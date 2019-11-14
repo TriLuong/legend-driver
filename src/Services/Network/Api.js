@@ -17,6 +17,7 @@ export const logout = async () => {
 
 export const login = payload => ApiInstance.post('/api/v1/auth/login', payload)
 export const forgotPassword = payload => ApiInstance.post('/api/v1/auth/forgotPassword', payload)
+export const extendToken = payload => ApiInstance.post('/api/v1/auth/extendToken', payload)
 
 export const getLoads = params => ApiInstance.get('/api/v1/loads', params)
 export const getLoadById = id => ApiInstance.get(`/api/v1/loads/${id}`)
@@ -26,5 +27,6 @@ export default {
   logout,
   getLoads,
   getLoadById,
-  forgotPassword
+  forgotPassword,
+  extendToken
 }

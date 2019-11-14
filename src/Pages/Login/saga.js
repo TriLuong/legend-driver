@@ -7,6 +7,7 @@ import actionsUser from 'Store/user/actions'
 import types from 'Store/auth/constanst'
 import FirebaseHelper from 'Utils/FirebaseHelper'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
+import { yieldExpression } from '@babel/types'
 
 // function* loginSaga({ payload }) {
 //   try {
@@ -92,8 +93,27 @@ function* forgotPassword({ payload }) {
   }
 }
 
+function* extendToken({ payload }) {
+  try {
+    const res = yield call(Api.extendToken, payload)
+    if (!res.message) {
+      const token = res.token
+      ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
+      yield put(actions.extendTokenSuccess(res.token))
+      yield put(actionsUser.updateTokenSuccess(res.token))
+    } else {
+      throw new Error(res.message)
+    }
+  } catch (error) {
+    alert(error)
+    yield put(actions.extendTokenFailure(error))
+    yield put(actionsUser.updateTokenFailure(error))
+  }
+}
+
 export default function* loginWatcher() {
   yield takeLatest(types.LOGIN_REQUEST, loginSaga)
   yield takeLatest(types.LOGOUT_REQUEST, logoutSaga)
   yield takeLatest(types.FORGOT_PASSWORD, forgotPassword)
+  yield takeLatest(types.EXTEND_TOKEN, extendToken)
 }

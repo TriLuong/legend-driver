@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import Layout from 'Layout'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import { getTokenSelector } from 'Store/auth/selectors'
+import { getUserSelector } from 'Store/user/selectors'
+import { extendToken } from 'Store/auth/actions'
 import Loader from 'Pages/Loader'
 import { useInjectSaga } from 'redux-injectors'
 import Login from 'Pages/Login'
@@ -12,6 +16,19 @@ import RedirectHome from './RedirectHome'
 
 function App() {
   useInjectSaga({ key: 'login', saga: loginSaga })
+  const [isExtendToken, setIsExtendToken] = useState(false)
+  const dispatch = useDispatch()
+  const token = useSelector(getTokenSelector)
+  const user = useSelector(getUserSelector)
+
+  useEffect(() => {
+    if (!isExtendToken && user) {
+      const refreshToken = user.refreshToken
+      dispatch(extendToken({ refreshToken }))
+      setIsExtendToken(true)
+    }
+  }, [token])
+
   return (
     <Layout>
       <Helmet titleTemplate="%s - Legend" defaultTitle="Legend">

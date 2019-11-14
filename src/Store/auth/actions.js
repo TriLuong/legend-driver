@@ -13,6 +13,10 @@ export const forgotPassword = createAction(types.FORGOT_PASSWORD)
 export const forgotPasswordSuccess = createAction(types.FORGOT_PASSWORD_SUCCESS)
 export const forgotPasswordFailure = createAction(types.FORGOT_PASSWORD_FAILURE)
 
+export const extendToken = createAction(types.EXTEND_TOKEN)
+export const extendTokenSuccess = createAction(types.EXTEND_TOKEN_SUCCESS)
+export const extendTokenFailure = createAction(types.EXTEND_TOKEN_FAILURE)
+
 export default {
   loginRequest,
   loginSuccess,
@@ -22,5 +26,8 @@ export default {
   logoutFailure,
   forgotPassword,
   forgotPasswordSuccess,
-  forgotPasswordFailure
+  forgotPasswordFailure,
+  extendToken,
+  extendTokenSuccess,
+  extendTokenFailure
 }
