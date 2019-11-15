@@ -15,7 +15,8 @@ const Detail = ({ data }) => {
   return (
     <div className="contentLoad">
       <div className="contentSection d-flex justify-content-between align-items-center">
-        <p className="contentLoadId">{`#${data.reservation}`}</p>
+        <p className="contentLoadId">{`#${data.id}`}</p>
+
         <IconCircle src={Assets.images.phoneIcon} />
       </div>
       <div className="contentSection ">

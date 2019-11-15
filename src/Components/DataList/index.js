@@ -31,19 +31,21 @@ const DataList = ({ data }) => {
   }
 
   const status = checkStatus(data.status)
+  const dataId = data.id
+
   return (
     <Link to={`/loadDetail/${data.id}`} className="row loadItemLink">
       <div className="col-2">
         <img src={Assets.images.loadLeftIcon} />
       </div>
-      <div className="col-7">
-        <h4 className="loadId">{`#${data.reservation}`}</h4>
-        <p className="loadDetail">{`${containerType} • ${date} • ${time}`}</p>
-      </div>
-      <div className="col-3 statusContainer">
-        <p className="loadDetail statusText" style={{ color: status.color }}>
-          {status.text}
-        </p>
+      <div className="col-10">
+        <h4 className="loadId">{`#${dataId}`}</h4>
+        <div className="d-flex flex-row justify-content-between align-items-center">
+          <p className="loadDetail">{`${containerType} • ${date} • ${time}`}</p>
+          <p className="loadDetail statusText align-self-center" style={{ color: status.color }}>
+            {status.text}
+          </p>
+        </div>
       </div>
     </Link>
   )
