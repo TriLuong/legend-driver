@@ -9,7 +9,7 @@ import { forgotPassword } from 'Store/auth/actions'
 import saga from './saga'
 import './styles.scss'
 
-const redirectURL = 'http://localhost:3001/user/login'
+const redirectURL = 'https://legend-staging-driver.web.app/user/login'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
