@@ -8,6 +8,7 @@ import types from 'Store/auth/constanst'
 import FirebaseHelper from 'Utils/FirebaseHelper'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
 import { yieldExpression } from '@babel/types'
+import Toast from 'Components/Toast'
 
 // function* loginSaga({ payload }) {
 //   try {
@@ -42,6 +43,7 @@ function* loginSaga({ payload }) {
       const role = res.role
       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
       if (role === 'Driver') {
+        Toast.showSuccess('Login SUCCESS!!!')
         yield put(actions.loginSuccess(res.token))
         yield put(actionsUser.getUserSuccess(res))
         yield put(loaderEnd())
@@ -54,7 +56,7 @@ function* loginSaga({ payload }) {
     }
   } catch (error) {
     yield put(loaderEnd())
-    alert(error)
+    Toast.showError(error.message)
     yield put(actions.loginFailure(error))
     yield put(actionsUser.getUserFailure(error))
   }
@@ -62,7 +64,6 @@ function* loginSaga({ payload }) {
 
 function* logoutSaga() {
   try {
-    console.log('LOGOUT')
     ApiInstance.defaults.headers.common.Authorization = ''
     yield put(loaderStart())
     yield call(Api.logout)
@@ -70,7 +71,7 @@ function* logoutSaga() {
     yield put(push('/user/login'))
   } catch (error) {
     yield put(loaderEnd())
-    alert(error)
+    Toast.showError(error.message)
   }
 }
 
@@ -80,15 +81,17 @@ function* forgotPassword({ payload }) {
     yield put(loaderStart())
     const res = yield call(Api.forgotPassword, payload)
     if (!res.code) {
+      Toast.showSuccess(res.message)
       yield put(loaderEnd())
       yield put(actions.forgotPasswordSuccess())
-      alert(res.message)
+      yield put(push('/user/login'))
     } else {
-      throw new Error(res.message)
+      Toast.showError(res.message)
+      yield put(actions.forgotPasswordFailure(res.message))
     }
   } catch (error) {
     yield put(loaderEnd())
-    alert(error)
+    Toast.showError(error.response.data.message)
     yield put(actions.forgotPasswordFailure(error.response.data.message))
   }
 }
@@ -105,7 +108,7 @@ function* extendToken({ payload }) {
       throw new Error(res.message)
     }
   } catch (error) {
-    alert(error)
+    Toast.showError(error.message)
     yield put(actions.extendTokenFailure(error))
     yield put(actionsUser.updateTokenFailure(error))
   }

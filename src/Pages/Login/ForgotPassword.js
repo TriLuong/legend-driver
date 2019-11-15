@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
+import { Link } from 'react-router-dom'
 import { InputText, Button, Text } from 'Components/common'
 import Assets from 'Assets'
 import { useInjectSaga } from 'redux-injectors'
@@ -28,21 +29,26 @@ const ForgotPassword = () => {
         <Text text="Forgot Password" />
         <img src={Assets.images.icon} />
       </div>
-      <Formik initialValues={{ email }} onSubmit={onSubmit}>
-        {({ setFieldValue, handleSubmit, values }) => (
-          <form className="containterInput" onSubmit={handleSubmit}>
-            <InputText
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={values.email}
-              onChange={(name, value) => onChange(name, value, setFieldValue)}
-              className="mb-2"
-            />
-            <Button text="Reset" type="submit" />
-          </form>
-        )}
-      </Formik>
+      <div className="containterInput">
+        <Formik initialValues={{ email }} onSubmit={onSubmit}>
+          {({ setFieldValue, handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
+              <InputText
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={values.email}
+                onChange={(name, value) => onChange(name, value, setFieldValue)}
+                className="mb-2"
+              />
+              <Button text="Reset" type="submit" />
+            </form>
+          )}
+        </Formik>
+        <Link to="/user/login" className="forgetPassword">
+          Login?
+        </Link>
+      </div>
     </div>
   )
 }

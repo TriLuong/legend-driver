@@ -3,6 +3,7 @@ import Api from 'Services/Network/Api'
 import actions from 'Store/loadById/actions'
 import types from 'Store/loadById/constants'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
+import Toast from 'Components/Toast'
 
 function* getLoadByIdSaga({ payload }) {
   try {
@@ -11,9 +12,8 @@ function* getLoadByIdSaga({ payload }) {
     yield put(actions.getLoadByIdSuccess(res))
     yield put(loaderEnd())
   } catch (error) {
-    console.log(error)
     yield put(loaderEnd())
-    alert(error)
+    Toast.showError(error.message)
     yield put(actions.getLoadByIdFailure(error))
   }
 }

@@ -3,18 +3,17 @@ import Api from 'Services/Network/Api'
 import actions from 'Store/loads/actions'
 import types from 'Store/loads/constants'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
+import Toast from 'Components/Toast'
 
 function* getLoadsSaga({ payload }) {
   try {
     yield put(loaderStart())
-    console.log('getLoadsSaga', payload)
     const res = yield call(Api.getLoads, { params: payload })
     yield put(actions.getLoadsSuccess(res.data))
     yield put(loaderEnd())
   } catch (error) {
-    console.log(error)
     yield put(loaderEnd())
-    alert(error)
+    Toast.showError(error.message)
     yield put(actions.getLoadsFailure(error))
   }
 }
