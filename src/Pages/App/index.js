@@ -9,10 +9,13 @@ import { extendToken } from 'Store/auth/actions'
 import Loader from 'Pages/Loader'
 import { useInjectSaga } from 'redux-injectors'
 import Login from 'Pages/Login'
+import Toast from 'Components/Toast'
 import RoutesName from './RoutesName'
 import loginSaga from '../Login/saga'
 import PrivateRoute from './PrivateRoute'
 import RedirectHome from './RedirectHome'
+
+Toast.configure()
 
 function App() {
   useInjectSaga({ key: 'login', saga: loginSaga })
