@@ -34,8 +34,9 @@ function App() {
 
   return (
     <Layout>
-      <Helmet titleTemplate="%s - Legend" defaultTitle="Legend">
+      <Helmet titleTemplate="Legend - %s" defaultTitle="Legend">
         <meta name="description" content="Legend" />
+        <title>Driver App</title>
       </Helmet>
       <Switch>
         {RoutesName.map((route, index) => {
