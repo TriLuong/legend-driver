@@ -31,7 +31,7 @@ const DataList = ({ data }) => {
   }
 
   const status = checkStatus(data.status)
-  const dataId = data.id
+  // const dataId = data.id
 
   return (
     <Link to={`/loadDetail/${data.id}`} className="row loadItemLink">
@@ -39,7 +39,7 @@ const DataList = ({ data }) => {
         <img src={Assets.images.loadLeftIcon} />
       </div>
       <div className="col-10">
-        <h4 className="loadId">{`#${dataId}`}</h4>
+        <h4 className="loadId">{`#${data.load}`}</h4>
         <div className="d-flex flex-row justify-content-between align-items-center">
           <p className="loadDetail">{`${containerType} • ${date} • ${time}`}</p>
           <p className="loadDetail statusText align-self-center" style={{ color: status.color }}>
