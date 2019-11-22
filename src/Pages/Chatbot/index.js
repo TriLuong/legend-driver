@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { getTokenSelector } from 'Store/auth/selectors'
 import './styles.scss'
 
-const sourceChatbot = 'https://landbot.io/u/H-297057-UGLBFFN2ZS6ZXU6D/index.html'
+const sourceChatbot = 'https://landbot.io/u/H-310846-MZ2GMB47B885EUIR/index.html'
 const uri = 'http://legend-staging-driver.web.app'
 
 const Chatbot = props => {
@@ -12,7 +12,7 @@ const Chatbot = props => {
   const { loadId } = match.params
   const token = useSelector(getTokenSelector)
   const srcIframe = `${sourceChatbot}?token=${token}&load_id=${loadId}&uri=${uri}`
-
+  console.log(token)
   const onLoad = () => {
     setIsLoading(false)
   }

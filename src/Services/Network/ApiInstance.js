@@ -3,7 +3,8 @@ import { getStore } from 'Store/Store'
 import { logoutRequest } from 'Store/auth/actions'
 import { loadState } from 'Utils/localStorage'
 
-const API_BASE_URL = 'https://legend-staging.firebaseapp.com'
+// const API_BASE_URL = 'https://legend-staging.firebaseapp.com'
+const API_BASE_URL = 'https://rs-legend-api.herokuapp.com'
 const API_REQUEST_TIMEOUT = 60000
 const IS_STAGING = process.env.NODE_ENV !== 'production'
 
@@ -61,8 +62,8 @@ ApiInstance.interceptors.response.use(
           error.message = `(${serverError.code}) - ${serverError.message}`
           error.code = serverError.code
         } else if (
-          typeof error.response.data.error === 'object' &&
-          error.response.data.error.message
+          typeof error.response.data.error === 'object'
+          && error.response.data.error.message
         ) {
           const serverError = error.response.data.error
           error = `(${serverError.code}) - ${serverError.message}`

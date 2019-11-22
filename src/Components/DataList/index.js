@@ -34,7 +34,7 @@ const DataList = ({ data }) => {
   // const dataId = data.id
 
   return (
-    <Link to={`/loadDetail/${data.id}`} className="row loadItemLink">
+    <Link to={`/loadDetail/${data._id}`} className="row loadItemLink">
       <div className="col-2">
         <img src={Assets.images.loadLeftIcon} />
       </div>
