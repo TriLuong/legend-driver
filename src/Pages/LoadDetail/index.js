@@ -36,7 +36,7 @@ const LoadDetail = props => {
             <img src={Assets.images.loadLeftIcon} />
             <Detail data={loadById} />
             {loadById.status !== 'Delivered' && (
-              <Button text="Accept Load" onClick={() => onClick(loadId)} className="mb-2" />
+              <Button text="Accept Load" onClick={() => onClick(loadId)} className="mb-2" icon />
             )}
           </>
         )}

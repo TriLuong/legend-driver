@@ -6,7 +6,8 @@ const images = {
   backIcon: require('./images/backIcon.png'),
   threeDots: require('./images/threeDots.png'),
   phoneIcon: require('./images/phoneIcon.png'),
-  navigatorIcon: require('./images/navigatorIcon.png')
+  navigatorIcon: require('./images/navigatorIcon.png'),
+  forwardIcon: require('./images/forwardIcon.png')
 }
 
 const fontMap = {
