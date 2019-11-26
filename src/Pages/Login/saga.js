@@ -5,34 +5,8 @@ import Api from 'Services/Network/Api'
 import actions from 'Store/auth/actions'
 import actionsUser from 'Store/user/actions'
 import types from 'Store/auth/constanst'
-import FirebaseHelper from 'Utils/FirebaseHelper'
 import { loaderStart, loaderEnd } from 'Store/loader/actions'
-import { yieldExpression } from '@babel/types'
 import Toast from 'Components/Toast'
-
-// function* loginSaga({ payload }) {
-//   try {
-//     yield put(loaderStart())
-//     const { email, password } = payload
-//     const res = yield call(Api.login, email, password)
-//     const token = yield FirebaseHelper.currentUserToken()
-//     const currentIdTokenResult = yield FirebaseHelper.getIdTokenResult()
-//     const role = currentIdTokenResult.claims.role
-//     if (role === 'Driver') {
-//       ApiInstance.defaults.headers.common.Authorization = `Bearer ${token}`
-//       yield put(actions.loginSuccess(token))
-//       yield put(loaderEnd())
-//       yield put(push('/'))
-//     } else {
-//       throw new Error('Not Driver')
-//     }
-//   } catch (error) {
-//     console.log(error)
-//     yield put(loaderEnd())
-//     alert(error)
-//     yield put(actions.loginFailure(error))
-//   }
-// }
 
 function* loginSaga({ payload }) {
   try {
