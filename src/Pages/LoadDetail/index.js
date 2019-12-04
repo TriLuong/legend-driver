@@ -30,6 +30,13 @@ const LoadDetail = props => {
     })
   }
 
+  const onClickIcon = loadId => {
+    const { history } = props
+    history.push({
+      pathname: `/chatbotHistory/${loadId}`
+    })
+  }
+
   const toggleShowMore = () => {
     setShowMore(!showMore)
   }
@@ -39,7 +46,7 @@ const LoadDetail = props => {
       <div className="containerContentLoad">
         {loadById && (
           <>
-            <img src={Assets.images.loadLeftIcon} />
+            <img src={Assets.images.loadLeftIcon} onClick={onClickIcon} />
             <Detail data={loadById} showMore={showMore} />
             {loadById.status !== 'Delivered' ? (
               <Button text="Accept Load" onClick={() => onClick(loadId)} className="mb-2" icon />
