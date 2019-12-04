@@ -52,6 +52,15 @@ const ShowLess = ({ data }) => {
           <TextSub text={locationDropOff} className="loadAddress" />
         </div>
       </div>
+      <div className="contentSection ">
+        <div className="sectionItem d-flex justify-content-between align-items-center">
+          <TextLoadTitle text="Notes" />
+          {/* <IconCircle src={Assets.images.navigatorIcon} /> */}
+        </div>
+        <div className="sectionItem d-flex justify-content-between align-items-center">
+          <TextSub text={data.notes || 'No notes for this load'} className="loadAddress" />
+        </div>
+      </div>
     </div>
   )
 }
