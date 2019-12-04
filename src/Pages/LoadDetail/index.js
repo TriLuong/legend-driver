@@ -30,7 +30,7 @@ const LoadDetail = props => {
     })
   }
 
-  const onClickIcon = loadId => {
+  const onClickIcon = () => {
     const { history } = props
     history.push({
       pathname: `/chatbotHistory/${loadId}`
