@@ -4202,3 +4202,7 @@ div#hu-bot-progress-bar[data-step='0'] {
 .hu-border-color_button-background-dark {
     border-color: rgb(161, 163, 205);
 }
+
+.hu-messages-wrapper > .hu-message:last-child {
+  margin-bottom: 5rem;
+}

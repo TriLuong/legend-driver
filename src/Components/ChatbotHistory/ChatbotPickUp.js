@@ -6,7 +6,14 @@ import './landbot-2.2.0.css'
 const ChatbotPickUp = ({ data }) => {
   const loadChat = data.chat
   const imgSrc = loadChat.bolImageUrl
-
+  let containerType = ''
+  if (loadChat.isDropAndHookLoad === 1) {
+    if (loadChat.containerType === 'LoadDropped') {
+      containerType = 'Load dropped, empty pulled to Reload'
+    } else {
+      containerType = 'Empty dropped - Load pulled'
+    }
+  }
   return (
     <ChatbotContainer>
       <BotReview question="Hi there!" isVisible={false} />
@@ -17,9 +24,8 @@ const ChatbotPickUp = ({ data }) => {
         question="Is this a Drop and Hook load?"
         answer={loadChat.isDropAndHookLoad ? 'Yes' : 'No'}
       />
-
-      {loadChat.isDropAndHookLoad && (
-        <BotReview question="What is Container 1#?" answer="Load dropped, empty" />
+      {loadChat.isDropAndHookLoad === 1 && (
+        <BotReview question="What is Container 1#?" answer={containerType} />
       )}
       <BotReview question="Container # ?" answer={loadChat.container} />
       <BotReview question="Chassis # ?" answer={loadChat.chassis} />

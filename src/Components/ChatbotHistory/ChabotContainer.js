@@ -25,13 +25,13 @@ const ChatbotContainer = ({ children }) => (
             </div>
           </div>
         </section>
-        <footer
+        {/* <footer
           id="hu-footer"
           style={{ height: '50px' }}
           styelclassName="hu-m-display-flex hu-align-center hu-justify-center"
         >
           <div className="hu-powered-by hu-a-center hu-height-auto" />
-        </footer>
+        </footer> */}
       </div>
     </div>
   </div>

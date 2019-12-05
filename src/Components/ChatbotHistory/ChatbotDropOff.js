@@ -12,7 +12,7 @@ const ChatbotDropOff = ({ data }) => {
       <BotReview question="Hi there!" isVisible={false} />
       <BotReview question="Welcome to our site.🤗" answer="Hi" />
       <BotReview question="Picking Up or Dropping Off" answer="Dropping Off" />
-      <BotReview question="Chassis # ?" answer={loadChat.chassis} />
+      <BotReview question="Delivery # ?" answer={loadChat.delivery} />
       <BotReview question="Upload the POD" imageSrc={imgSrc} />
       <BotReview question="Mission Accomplised!!!" />
     </ChatbotContainer>
