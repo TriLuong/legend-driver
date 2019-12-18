@@ -1,5 +1,4 @@
 .contentLoad {
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   margin: 20px 0;
 
@@ -9,9 +8,12 @@
     box-shadow: 0 2px 16px 0 var(--black-8);
     margin-bottom: 12px;
 
+    .contentSection:first-child {
+      border-bottom: solid 1px var(--gunmetal-12);
+    }
+
     .contentSection {
       padding: 23.5px 16px;
-      border-bottom: solid 1px var(--gunmetal-12);
 
       .contentLoadId {
         font-family: SFProDisplay-Bold;

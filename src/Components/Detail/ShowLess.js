@@ -49,15 +49,15 @@ const ShowLess = ({ data }) => {
         <div className="contentSection ">
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Pick Up #" />
-            <TextSub text={data.pickUp ? data.pickUp : 'None'} />
+            <TextSub text={data.pickUp ? data.pickUp : 'None'} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Appointment #" />
-            <TextSub text={data.appointment} />
+            <TextSub text={data.appointment} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Reservation" />
-            <TextSub text={data.reservation} />
+            <TextSub text={data.reservation} className="textSubRight" />
           </div>
         </div>
       </div>
@@ -75,11 +75,11 @@ const ShowLess = ({ data }) => {
         <div className="contentSection ">
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Container #" />
-            <TextSub text={data.chat.container || 'None'} />
+            <TextSub text={data.container || 'None'} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Rail Pick Up #" />
-            <TextSub text={data.railPickUp || 'None'} />
+            <TextSub text={data.railPickUp || 'None'} className="textSubRight" />
           </div>
         </div>
       </div>

@@ -47,16 +47,10 @@ const LoadDetail = props => {
         {loadById && (
           <>
             <img src={Assets.images.loadLeftIcon} onClick={onClickIcon} />
-            <Detail data={loadById} showMore={showMore} />
+            <Detail data={loadById} />
             {loadById.status !== 'Delivered' ? (
               <Button text="Accept Load" onClick={() => onClick(loadId)} className="mb-2" icon />
-            ) : (
-              <Button
-                text={showMore ? 'Show Less' : 'Show More'}
-                onClick={toggleShowMore}
-                className="mb-2"
-              />
-            )}
+            ) : null}
           </>
         )}
       </div>
