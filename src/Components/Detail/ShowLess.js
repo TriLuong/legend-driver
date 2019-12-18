@@ -56,8 +56,12 @@ const ShowLess = ({ data }) => {
             <TextSub text={data.appointment} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
-            <TextSub text="Reservation" />
+            <TextSub text="Reservation #" />
             <TextSub text={data.reservation} className="textSubRight" />
+          </div>
+          <div className="sectionItem d-flex justify-content-between align-items-center">
+            <TextSub text="Return Rail" />
+            <TextSub text={data.returnRail || 'None'} className="textSubRight" />
           </div>
         </div>
       </div>
