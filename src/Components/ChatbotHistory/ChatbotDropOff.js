@@ -17,7 +17,7 @@ const ChatbotDropOff = ({ data }) => {
         <>
           <BotReview key={imgSrc} question="Upload the POD" imageSrc={imgSrc} />
           <BotReview
-            question="Do you want to upload more POD image?"
+            question="Do you have more POD images to upload?"
             answer={index === imgsSrc.length - 1 ? 'No' : 'Yes'}
           />
         </>

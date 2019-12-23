@@ -19,19 +19,19 @@ const ChatbotPickUp = ({ data }) => {
       <BotReview question="Hi there!" isVisible={false} />
       <BotReview question="Welcome to our site.🤗" answer="Hi" />
       <BotReview question="Picking Up or Dropping Off" answer="Picking Up" />
+      <BotReview question="Container # ?" answer={loadChat.container} />
       <BotReview
         question="Is this a Drop and Hook load?"
         answer={loadChat.isDropAndHookLoad ? 'Yes' : 'No'}
       />
       {loadChat.isDropAndHookLoad === 1 && (
-        <BotReview question="What is Container 1#?" answer={containerType} />
+        <BotReview question={`What is Container #${loadChat.container}?`} answer={containerType} />
       )}
-      <BotReview question="Container # ?" answer={loadChat.container} />
       {imgsSrc.map((imgSrc, index) => (
         <>
           <BotReview key={imgSrc} question="Upload the BOL" imageSrc={imgSrc} />
           <BotReview
-            question="Do you want to upload more BOL image?"
+            question="Do you have more BOL images to upload?"
             answer={index === imgsSrc.length - 1 ? 'No' : 'Yes'}
           />
         </>
@@ -44,8 +44,11 @@ const ChatbotPickUp = ({ data }) => {
       <BotReview question="Seal ?" answer={loadChat.containerSealNumber} />
       <BotReview
         question="Let us know when you get to the drop off location ?"
-        answer={loadChat.problem}
+        answer={loadChat.problem === 'Here' ? 'Here' : 'Problem'}
       />
+      {loadChat.problem !== 'Here' && (
+        <BotReview question="Type your problem:" answer={loadChat.problem} />
+      )}
       <BotReview question="Done !" />
     </ChatbotContainer>
   )
