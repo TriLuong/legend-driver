@@ -13,10 +13,13 @@ const ShowLess = ({ data }) => {
   const locationPickUp = data.pickUpLocation || 'None'
   return (
     <div className="contentLoad">
-      <div className="section">
+      <div className="arrowUp" />
+      <div className="section sectionFirst">
         <div className="contentSection d-flex justify-content-between align-items-center">
-          <p className="contentLoadId">{`#${data.load}`}</p>
-          <IconCircle src={Assets.images.phoneIcon} />
+          <TextLoadTitle text="Load #" />
+          <TextLoadTitle text={data.load} style={{ fontSize: '24px' }} />
+          {/* <p className="contentLoadId">{`#${data.load}`}</p>
+          <IconCircle src={Assets.images.phoneIcon} /> */}
         </div>
         <div className="contentSection ">
           <div className="sectionItem d-flex justify-content-between align-items-center">
@@ -49,19 +52,19 @@ const ShowLess = ({ data }) => {
         <div className="contentSection ">
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Pick Up #" />
-            <TextSub text={data.pickUp ? data.pickUp : 'None'} className="textSubRight" />
+            <TextLoadTitle text={data.pickUp ? data.pickUp : 'None'} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Appointment #" />
-            <TextSub text={data.appointment} className="textSubRight" />
+            <TextLoadTitle text={data.appointment} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Reservation #" />
-            <TextSub text={data.reservation} className="textSubRight" />
+            <TextLoadTitle text={data.reservation} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Return Rail" />
-            <TextSub text={data.returnRail || 'None'} className="textSubRight" />
+            <TextLoadTitle text={data.returnRail || 'None'} className="textSubRight" />
           </div>
         </div>
       </div>
@@ -79,11 +82,11 @@ const ShowLess = ({ data }) => {
         <div className="contentSection ">
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Container #" />
-            <TextSub text={data.container || 'None'} className="textSubRight" />
+            <TextLoadTitle text={data.container || 'None'} className="textSubRight" />
           </div>
           <div className="sectionItem d-flex justify-content-between align-items-center">
             <TextSub text="Rail Pick Up #" />
-            <TextSub text={data.railPickUp || 'None'} className="textSubRight" />
+            <TextLoadTitle text={data.railPickUp || 'None'} className="textSubRight" />
           </div>
         </div>
       </div>
